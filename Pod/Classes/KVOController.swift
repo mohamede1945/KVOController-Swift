@@ -129,17 +129,17 @@ private class KVOSingletonController : NSObject {
 
     func observe(object: AnyObject, var observer: KVOControllerProxy) {
 
-        OSSpinLockLock(&lock)
-        observers.addObject(observer)
-        OSSpinLockUnlock(&lock)
+        execute {
+            observers.addObject(observer)
+        }
 
         object.addObserver(self, forKeyPath: observer.keyPath, options: observer.options, context: observer.pointer)
     }
 
     func unobserve(object: AnyObject, keyPath: String, var observer: KVOControllerProxy) {
-        OSSpinLockLock(&lock)
-        observers.removeObject(observer)
-        OSSpinLockUnlock(&lock)
+        execute {
+            observers.removeObject(observer)
+        }
 
         object.removeObserver(self, forKeyPath: keyPath)
     }
@@ -154,12 +154,18 @@ private class KVOSingletonController : NSObject {
             let pointer = UnsafeMutablePointer<KVOControllerProxy>(context)
             let contextObserver = KVOControllerProxy.fromPointer(pointer)
             var info: KVOControllerProxy!
-            OSSpinLockLock(&lock)
-            info = observers.member(contextObserver) as? KVOControllerProxy
-            OSSpinLockUnlock(&lock)
+            execute {
+                info = observers.member(contextObserver) as? KVOControllerProxy
+            }
 
             if let info = info {
                 info.valueChanged(observable, change: change)
             }
+    }
+
+    private func execute(@noescape block: () -> ()) {
+        OSSpinLockLock(&lock)
+        block()
+        OSSpinLockUnlock(&lock)
     }
 }
