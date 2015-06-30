@@ -1,0 +1,14 @@
+PODS:
+  - KVOController (0.1.0)
+
+DEPENDENCIES:
+  - KVOController (from `../`)
+
+EXTERNAL SOURCES:
+  KVOController:
+    :path: ../
+
+SPEC CHECKSUMS:
+  KVOController: b076e951f7fb051f290471828b2518bd09f9819b
+
+COCOAPODS: 0.37.2
