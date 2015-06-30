@@ -10,12 +10,16 @@ public typealias Observable = AnyObject
 
 public class Controller<Observer : Observer> : KVOObserver {
 
-    let keyPath: String
-    let options: NSKeyValueObservingOptions
+    public let keyPath: String
+    public let options: NSKeyValueObservingOptions
 
-    let observer: Observer
+    public let observer: Observer
 
     private let store: ObservableStore<Observer.ObservableType>
+
+    public var observable: Observer.ObservableType? {
+        return store.observable
+    }
 
     private var proxy: ControllerProxy!
 
@@ -42,15 +46,15 @@ public class Controller<Observer : Observer> : KVOObserver {
         unobserve()
     }
 
-    func unobserve() {
-        if let observable = store.observable where observing {
+    public func unobserve() {
+        if let observable = observable where observing {
             SharedObserverController.shared.unobserve(observable, keyPath: keyPath, observer: self.proxy)
             observing = false
         }
     }
 
-    func valueChanged(observable: Observable, change: [NSObject : AnyObject]) {
-        if let observableObject = store.observable where observing {
+    private func valueChanged(observable: Observable, change: [NSObject : AnyObject]) {
+        if let observableObject = self.observable where observing {
             let kvoChange = Change<Observer.PropertyType>(change: change)
             observer.valueChanged(observableObject, change: kvoChange)
         }
