@@ -39,11 +39,11 @@ public protocol Observer {
     func valueChanged(observable: ObservableType, change: Change<PropertyType>)
 }
 
-public struct BlockObserver<ObservableType : AnyObject, PropertyType> : Observer {
+public struct ClosureObserver<ObservableType : AnyObject, PropertyType> : Observer {
 
-    typealias ObservingBlock = (observable: ObservableType, change: Change<PropertyType>) -> ()
+    public typealias ObservingBlock = (observable: ObservableType, change: Change<PropertyType>) -> ()
 
-    let block: ObservingBlock
+    public let block: ObservingBlock
 
     public init(block: ObservingBlock) {
         self.block = block
@@ -53,7 +53,6 @@ public struct BlockObserver<ObservableType : AnyObject, PropertyType> : Observer
         block(observable: observable, change: change)
     }
 }
-
 
 public enum ObservableStorage {
     case Retained

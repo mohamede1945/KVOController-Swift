@@ -15,8 +15,6 @@ public class Controller<Observer : Observer> : KVOObserver {
 
     let observer: Observer
 
-    let context: UnsafeMutablePointer<Void>
-
     private let store: ObservableStore<Observer.ObservableType>
 
     private var proxy: ControllerProxy!
@@ -34,7 +32,6 @@ public class Controller<Observer : Observer> : KVOObserver {
             self.keyPath = keyPath
             self.options = options
             self.observer = observer
-            self.context = context
             self.store = ObservableStore(observable: observable, storage: obserableStorage)
 
             self.proxy = ControllerProxy(self)
