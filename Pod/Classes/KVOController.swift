@@ -1,102 +1,71 @@
 //
 //  KVOController.swift
-//  VuPoint
+//  KVOController
 //
-//  Created by TCSASSEMBLER on 4/7/15.
-//  Copyright (c) 2015 TopCoder. All rights reserved.
+//  Created by mohamede1945 on 6/20/15.
+//  Copyright (c) 2015 Varaw. All rights reserved.
 //
 
-import UIKit
+public typealias Observable = AnyObject
 
-public struct KVOChange<T> {
-
-    let kind: NSKeyValueChange  // NSKeyValueChangeKindKey
-
-    let newValue: T?            // NSKeyValueChangeNewKey
-
-    let oldValue: T?            // NSKeyValueChangeOldKey
-
-    let indexes: NSIndexSet?    // NSKeyValueChangeIndexesKey
-
-    let isPrior: Bool           // NSKeyValueChangeNotificationIsPriorKey
-
-    init(change: [NSObject: AnyObject]) {
-
-        // mandatory
-        kind = NSKeyValueChange(rawValue: change[NSKeyValueChangeKindKey]!.unsignedLongValue)!
-        isPrior  = change[NSKeyValueChangeNotificationIsPriorKey] as! Bool
-
-        // optional
-        newValue = change[NSKeyValueChangeNewKey] as? T
-        oldValue = change[NSKeyValueChangeOldKey] as? T
-        indexes  = change[NSKeyValueChangeIndexesKey] as? NSIndexSet
-    }
-}
-
-private protocol Observer : class {
-    var keyPath: String { get }
-    var options: NSKeyValueObservingOptions { get }
-    func valueChanged(observable: AnyObject, change: [NSObject : AnyObject])
-}
-
-public enum ObservableStorage<T : AnyObject> {
-    case Retained(T)
-    case Nonretained(T)
-}
-
-public class KVOController<ObservableType: AnyObject, PropertyType> : Observer {
-
-    typealias KVOObservingBlock = (observable: ObservableType, change: KVOChange<PropertyType>) -> ()
+public class Controller<Observer : Observer> : KVOObserver {
 
     let keyPath: String
     let options: NSKeyValueObservingOptions
 
-    let block: KVOObservingBlock
+    let observer: Observer
 
     let context: UnsafeMutablePointer<Void>
 
-    weak var observable: ObservableType?
+    private let store: ObservableStore<Observer.ObservableType>
 
-    private var proxy: KVOControllerProxy!
+    private var proxy: ControllerProxy!
+
+    var observing = true
 
     init(
-        observable  : ObservableType,
+        observable  : Observer.ObservableType,
+        obserableStorage: ObservableStorage = .Retained,
         keyPath : String,
         options : NSKeyValueObservingOptions,
-        block   : KVOObservingBlock,
-        context : UnsafeMutablePointer<Void> = nil) {
+        context : UnsafeMutablePointer<Void> = nil,
+        observer : Observer) {
 
             self.keyPath = keyPath
             self.options = options
-            self.block = block
+            self.observer = observer
             self.context = context
-            self.observable = observable
+            self.store = ObservableStore(observable: observable, storage: obserableStorage)
 
-            self.proxy = KVOControllerProxy(self)
-            KVOSingletonController.singleton.observe(observable, observer: self.proxy)
+            self.proxy = ControllerProxy(self)
+            SharedObserverController.shared.observe(observable, observer: self.proxy)
     }
 
     deinit {
-        if let observable = observable {
-            KVOSingletonController.singleton.unobserve(observable, keyPath: keyPath, observer: self.proxy)
+        unobserve()
+    }
+
+    func unobserve() {
+        if let observable = store.observable where observing {
+            SharedObserverController.shared.unobserve(observable, keyPath: keyPath, observer: self.proxy)
+            observing = false
         }
     }
 
-    func valueChanged(observable: AnyObject, change: [NSObject : AnyObject]) {
-        if let observableObject = self.observable {
-            let kvoChange = KVOChange<PropertyType>(change: change)
-            block(observable: observableObject, change: kvoChange)
+    func valueChanged(observable: Observable, change: [NSObject : AnyObject]) {
+        if let observableObject = store.observable where observing {
+            let kvoChange = Change<Observer.PropertyType>(change: change)
+            observer.valueChanged(observableObject, change: kvoChange)
         }
     }
-
 }
 
 @objc
-private class KVOControllerProxy: NSObject, Observer {
+private class ControllerProxy: NSObject, KVOObserver {
 
-    unowned var observer: Observer
+    unowned var observer: KVOObserver
 
-    init(_ observer: Observer) {
+    init(_ observer: KVOObserver) {
         self.observer = observer
     }
 
@@ -108,40 +77,40 @@ private class KVOControllerProxy: NSObject, Observer {
         return observer.options
     }
 
-    func valueChanged(observable: AnyObject, change: [NSObject : AnyObject]) {
+    func valueChanged(observable: Observable, change: [NSObject : AnyObject]) {
         return observer.valueChanged(observable, change: change)
     }
 
-    lazy var pointer: UnsafeMutablePointer<KVOControllerProxy> = {
-        return UnsafeMutablePointer<KVOControllerProxy>(Unmanaged<KVOControllerProxy>.passUnretained(self).toOpaque())
+    lazy var pointer: UnsafeMutablePointer<ControllerProxy> = {
+        return UnsafeMutablePointer<ControllerProxy>(Unmanaged<ControllerProxy>.passUnretained(self).toOpaque())
         }()
 
-    class func fromPointer(pointer: UnsafeMutablePointer<KVOControllerProxy>) -> KVOControllerProxy {
-        return Unmanaged<KVOControllerProxy>.fromOpaque(COpaquePointer(pointer)).takeUnretainedValue()
+    class func fromPointer(pointer: UnsafeMutablePointer<ControllerProxy>) -> ControllerProxy {
+        return Unmanaged<ControllerProxy>.fromOpaque(COpaquePointer(pointer)).takeUnretainedValue()
     }
 }
 
-private class KVOSingletonController : NSObject {
+private class SharedObserverController : NSObject {
     let observers = NSHashTable.weakObjectsHashTable()
     var lock = OS_SPINLOCK_INIT
 
-    static let singleton = KVOSingletonController()
+    static let shared = SharedObserverController()
 
-    func observe(object: AnyObject, var observer: KVOControllerProxy) {
+    func observe(observable: Observable, var observer: ControllerProxy) {
 
-        execute {
+        executeSafely {
             observers.addObject(observer)
         }
 
-        object.addObserver(self, forKeyPath: observer.keyPath, options: observer.options, context: observer.pointer)
+        observable.addObserver(self, forKeyPath: observer.keyPath, options: observer.options, context: observer.pointer)
     }
 
-    func unobserve(object: AnyObject, keyPath: String, var observer: KVOControllerProxy) {
-        execute {
+    func unobserve(observable: Observable, keyPath: String, var observer: ControllerProxy) {
+        executeSafely {
             observers.removeObject(observer)
         }
 
-        object.removeObserver(self, forKeyPath: keyPath)
+        observable.removeObserver(self, forKeyPath: keyPath)
     }
 
     override func observeValueForKeyPath(keyPath: String, ofObject observable: AnyObject,
@@ -150,22 +119,52 @@ private class KVOSingletonController : NSObject {
             assert(context != nil,
                 "Context is missing for keyPath:'\(keyPath)' of observable:'\(observable)', change:'\(change)'")
 
-
-            let pointer = UnsafeMutablePointer<KVOControllerProxy>(context)
-            let contextObserver = KVOControllerProxy.fromPointer(pointer)
-            var info: KVOControllerProxy!
-            execute {
-                info = observers.member(contextObserver) as? KVOControllerProxy
+            let pointer = UnsafeMutablePointer<ControllerProxy>(context)
+            let contextObserver = ControllerProxy.fromPointer(pointer)
+            var info: ControllerProxy?
+            executeSafely {
+                info = observers.member(contextObserver) as? ControllerProxy
             }
 
             if let info = info {
                 info.valueChanged(observable, change: change)
             }
     }
-
-    private func execute(@noescape block: () -> ()) {
+    
+    private func executeSafely(@noescape block: () -> ()) {
         OSSpinLockLock(&lock)
         block()
         OSSpinLockUnlock(&lock)
+    }
+}
+
+
+private protocol KVOObserver : class {
+    var keyPath: String { get }
+    var options: NSKeyValueObservingOptions { get }
+    func valueChanged(observable: Observable, change: [NSObject : AnyObject])
+}
+
+private struct ObservableStore<T : Observable> {
+
+    var storage: ObservableStorage
+
+    var retainedObservable: T?
+    weak var nonretainedObservable: T?
+
+    init(observable: T, storage: ObservableStorage) {
+        self.storage = storage
+
+        switch storage {
+        case .Retained:     retainedObservable = observable
+        case .Nonretained:  nonretainedObservable = observable
+        }
+    }
+
+    var observable : T? {
+        switch storage {
+        case .Retained: return retainedObservable
+        case .Nonretained: return nonretainedObservable
+        }
     }
 }
