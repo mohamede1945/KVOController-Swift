@@ -7,250 +7,363 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0BB681C6984C3C5A22BA57C8 /* KVOController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 47FE61285FD854D3E84501F8 /* KVOController.bundle */; };
-		54BCEAD91B42443000564F90 /* KVOController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BCEAD81B42443000564F90 /* KVOController.swift */; };
-		54BCEADB1B4262D100564F90 /* KVOTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BCEADA1B4262D100564F90 /* KVOTypes.swift */; };
-		60F48A265A699943D27ACF24 /* Pods-KVOController_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A979516E485BE25817259331 /* Pods-KVOController_Tests-dummy.m */; };
-		6A85590765F6A3D6C45D46D0 /* Pods-KVOController_Tests-KVOController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 54D62808A9A2C0583D26E7A3 /* Pods-KVOController_Tests-KVOController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8A04DC8373CF144BC2CFC4C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92DA5A262D49F949B6901A25 /* Foundation.framework */; };
-		8B9C85C6A2C9D68AEC764BE2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92DA5A262D49F949B6901A25 /* Foundation.framework */; };
-		8EC04E7263776AC60A2F9552 /* Pods-KVOController_Tests-KVOController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5A1B996446F1CE0BF9B8D /* Pods-KVOController_Tests-KVOController-dummy.m */; };
-		FDC002AB5874E695A48EAAD8 /* Pods-KVOController_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C744365F56CF75275E1251F /* Pods-KVOController_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		073521F8003E0B216A7FB57D /* Pods-KVOController_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D752A69D445E232DDC0C58C7 /* Pods-KVOController_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		13939C7B8A53543C01ADC163 /* Pods-KVOController_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D2025B12DB12CD70F8977C /* Pods-KVOController_Example-dummy.m */; };
+		24B790D4B48CEBECAF161575 /* Pods-KVOController_Tests-KVOController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 637FCB6BEABF9BBD11F6FD28 /* Pods-KVOController_Tests-KVOController-dummy.m */; };
+		549A1C6A1B5F860E009D529E /* KVOTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A1C681B5F860E009D529E /* KVOTypes.swift */; };
+		549A1C6B1B5F860E009D529E /* KVOTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A1C681B5F860E009D529E /* KVOTypes.swift */; };
+		549A1C6C1B5F860E009D529E /* KVOController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A1C691B5F860E009D529E /* KVOController.swift */; };
+		549A1C6D1B5F860E009D529E /* KVOController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A1C691B5F860E009D529E /* KVOController.swift */; };
+		598FB4208EEF995398BAB8D8 /* KVOController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BBAA8F5331E6F6208B5E47D9 /* KVOController.bundle */; };
+		84927D8D79B04AD2C9C82FAB /* KVOController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C6ED8CFD8B529CA2A7DE636 /* KVOController.bundle */; };
+		9668F51CA169D0B39DCB1EB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3457719717A9229021F6DF /* Foundation.framework */; };
+		9EF5C07316BC73B7F8C2BE8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3457719717A9229021F6DF /* Foundation.framework */; };
+		A09CACA9D11C55FD042E965C /* Pods-KVOController_Example-KVOController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 00FF31AACD68D1BA8EE15BB8 /* Pods-KVOController_Example-KVOController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C76B83649F9E8B117A988F03 /* Pods-KVOController_Tests-KVOController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6540C9FA1D3337608367FA50 /* Pods-KVOController_Tests-KVOController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0B6482799BF3E93116B6875 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3457719717A9229021F6DF /* Foundation.framework */; };
+		ED65B97851D1E2AFB2B8CC94 /* Pods-KVOController_Example-KVOController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE767704B71DD72FE279E /* Pods-KVOController_Example-KVOController-dummy.m */; };
+		F60A2C683F140E8A2DBEFDB4 /* Pods-KVOController_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DF0C08A9A0ABBA048726A2 /* Pods-KVOController_Tests-dummy.m */; };
+		F61C570C7623D7E100CE06CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3457719717A9229021F6DF /* Foundation.framework */; };
+		FE2AC94CC415C7C0095B16B6 /* Pods-KVOController_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 808C94A0DD98BC673138AC14 /* Pods-KVOController_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1ED33CD6D1F06A09CBDBB8A5 /* PBXContainerItemProxy */ = {
+		4494509645899CF3253A1D4C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CF2AEB47173D3275932CFF0F /* Project object */;
+			containerPortal = CE8BDCF79A3513A658ADE323 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 77B722496BA0567F4861E653;
+			remoteGlobalIDString = D16EA94C6CE6728EB302D175;
+			remoteInfo = "Pods-KVOController_Example-KVOController";
+		};
+		69C1EEA1260CC699964637E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE8BDCF79A3513A658ADE323 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 766D1DA41DAFBDBFDD41EF38;
 			remoteInfo = "Pods-KVOController_Tests-KVOController";
 		};
-		F0A01A8C8FF0F32A3D935949 /* PBXContainerItemProxy */ = {
+		930865839A73D4193FBD4442 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CF2AEB47173D3275932CFF0F /* Project object */;
+			containerPortal = CE8BDCF79A3513A658ADE323 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 61015730E9398CD59352F965;
+			remoteGlobalIDString = 498F1F105D852B1DD74763C1;
 			remoteInfo = "Pods-KVOController_Tests-KVOController-KVOController";
+		};
+		B64BD58CC2FA85CF49FF4904 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE8BDCF79A3513A658ADE323 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCE105F504C7090779FC6D8F;
+			remoteInfo = "Pods-KVOController_Example-KVOController-KVOController";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E6E1B8C412E01662DF38DF9 /* Pods-KVOController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KVOController_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		21FF71C2CCCDC97FF9D261B6 /* Pods-KVOController_Tests-KVOController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KVOController_Tests-KVOController-prefix.pch"; sourceTree = "<group>"; };
-		25747ACDE5B4138949D5F703 /* Pods-KVOController_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KVOController_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		2B8EA993E72D091622B4A1E4 /* Pods-KVOController_Tests-KVOController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KVOController_Tests-KVOController.modulemap"; sourceTree = "<group>"; };
-		47FE61285FD854D3E84501F8 /* KVOController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KVOController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		54BCEAD81B42443000564F90 /* KVOController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVOController.swift; sourceTree = "<group>"; };
-		54BCEADA1B4262D100564F90 /* KVOTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVOTypes.swift; sourceTree = "<group>"; };
-		54D62808A9A2C0583D26E7A3 /* Pods-KVOController_Tests-KVOController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KVOController_Tests-KVOController-umbrella.h"; sourceTree = "<group>"; };
-		55270A15F62A6594182F9908 /* KVOController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KVOController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C744365F56CF75275E1251F /* Pods-KVOController_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KVOController_Tests-umbrella.h"; sourceTree = "<group>"; };
-		7FB22844C95CFAC40489C425 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		870D46BAD80C199904C62496 /* Pods-KVOController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KVOController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		8809DFF8EFBD64A5CB209EA0 /* Pods_KVOController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KVOController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		92DA5A262D49F949B6901A25 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		96EF04466D583F6B6A59C925 /* Pods-KVOController_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KVOController_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		9E80C73385CA867DE02033D8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9EC5A1B996446F1CE0BF9B8D /* Pods-KVOController_Tests-KVOController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KVOController_Tests-KVOController-dummy.m"; sourceTree = "<group>"; };
-		A979516E485BE25817259331 /* Pods-KVOController_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KVOController_Tests-dummy.m"; sourceTree = "<group>"; };
-		A98F58D21BC7375997CEEE94 /* Pods-KVOController_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KVOController_Tests.modulemap"; sourceTree = "<group>"; };
-		B658A704CC968F17AB97837B /* Pods-KVOController_Tests-KVOController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KVOController_Tests-KVOController.xcconfig"; sourceTree = "<group>"; };
-		C62760844A1D3410074BB807 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D39D01B51D033F26B17D2400 /* Pods-KVOController_Tests-KVOController-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KVOController_Tests-KVOController-Private.xcconfig"; sourceTree = "<group>"; };
-		DD191D982D1F418AE534F0A5 /* Pods-KVOController_Tests-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KVOController_Tests-environment.h"; sourceTree = "<group>"; };
-		DDD56E803DD89B7A00683AFB /* Pods-KVOController_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KVOController_Tests-resources.sh"; sourceTree = "<group>"; };
-		FF98DDC4CB91EEEF5EBD1263 /* Pods-KVOController_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KVOController_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		00FF31AACD68D1BA8EE15BB8 /* Pods-KVOController_Example-KVOController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KVOController_Example-KVOController-umbrella.h"; sourceTree = "<group>"; };
+		01C8B4C0D3D659EEDF7329E5 /* Pods-KVOController_Tests-KVOController-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KVOController_Tests-KVOController-Private.xcconfig"; path = "../Pods-KVOController_Tests-KVOController/Pods-KVOController_Tests-KVOController-Private.xcconfig"; sourceTree = "<group>"; };
+		102C957D93D8508DB7130058 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		11EB677C38A42D563CC6B3BF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Pods-KVOController_Tests-KVOController/Info.plist"; sourceTree = "<group>"; };
+		1693D690E35632E3DCD8CD23 /* Pods-KVOController_Example-KVOController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KVOController_Example-KVOController.xcconfig"; sourceTree = "<group>"; };
+		193920B29C7683F39A9FC95C /* Pods-KVOController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KVOController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		20884D0987C98AC8F3B13C96 /* Pods-KVOController_Tests-KVOController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "Pods-KVOController_Tests-KVOController.modulemap"; path = "../Pods-KVOController_Tests-KVOController/Pods-KVOController_Tests-KVOController.modulemap"; sourceTree = "<group>"; };
+		2773DBE54F420852F20F9878 /* Pods-KVOController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KVOController_Example.release.xcconfig"; sourceTree = "<group>"; };
+		2C6ED8CFD8B529CA2A7DE636 /* KVOController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KVOController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CD1F8A05C139D5789A5E34E /* Pods-KVOController_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KVOController_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3333DE2B8A83EB8597A2694A /* Pods_KVOController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KVOController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D90448851F9DB4D797B5020 /* Pods-KVOController_Tests-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KVOController_Tests-environment.h"; sourceTree = "<group>"; };
+		40D2025B12DB12CD70F8977C /* Pods-KVOController_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KVOController_Example-dummy.m"; sourceTree = "<group>"; };
+		437BA65F85BF90E64F4E19BA /* Pods-KVOController_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KVOController_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		47411E40D00C7AF836032F5C /* Pods-KVOController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KVOController_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		4C3457719717A9229021F6DF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		504630D66F193B5174F15FE4 /* Pods-KVOController_Example-KVOController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KVOController_Example-KVOController.modulemap"; sourceTree = "<group>"; };
+		549A1C681B5F860E009D529E /* KVOTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVOTypes.swift; sourceTree = "<group>"; };
+		549A1C691B5F860E009D529E /* KVOController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVOController.swift; sourceTree = "<group>"; };
+		57B6541CB4A96E0272E4B7C1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CCB4A940890012AF2FB008D /* KVOController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KVOController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		637FCB6BEABF9BBD11F6FD28 /* Pods-KVOController_Tests-KVOController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-KVOController_Tests-KVOController-dummy.m"; path = "../Pods-KVOController_Tests-KVOController/Pods-KVOController_Tests-KVOController-dummy.m"; sourceTree = "<group>"; };
+		6540C9FA1D3337608367FA50 /* Pods-KVOController_Tests-KVOController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-KVOController_Tests-KVOController-umbrella.h"; path = "../Pods-KVOController_Tests-KVOController/Pods-KVOController_Tests-KVOController-umbrella.h"; sourceTree = "<group>"; };
+		67A5B3CA87892A10994059E4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70565DB4BCB788B855B54DA4 /* Pods-KVOController_Example-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KVOController_Example-environment.h"; sourceTree = "<group>"; };
+		74C742DE4F6B202EA93CBB6E /* KVOController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KVOController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		766E293EA725857F46AAB4B0 /* Pods-KVOController_Example-KVOController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KVOController_Example-KVOController-prefix.pch"; sourceTree = "<group>"; };
+		808C94A0DD98BC673138AC14 /* Pods-KVOController_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KVOController_Tests-umbrella.h"; sourceTree = "<group>"; };
+		8A8E25EC2915444A61EF98C8 /* Pods-KVOController_Tests-KVOController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KVOController_Tests-KVOController.xcconfig"; path = "../Pods-KVOController_Tests-KVOController/Pods-KVOController_Tests-KVOController.xcconfig"; sourceTree = "<group>"; };
+		8CB1417231B579D7CB1391BC /* Pods-KVOController_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KVOController_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8F7B578EFEAD971B5AEFC9D3 /* Pods-KVOController_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KVOController_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		B7137301BB6C076E0C381EC8 /* Pods_KVOController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KVOController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBAA8F5331E6F6208B5E47D9 /* KVOController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KVOController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		C804E546AAC8B1F86ECFA6BA /* Pods-KVOController_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KVOController_Tests.modulemap"; sourceTree = "<group>"; };
+		CADC43161279B4BAD08E4FE5 /* Pods-KVOController_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KVOController_Example-resources.sh"; sourceTree = "<group>"; };
+		CF1698C715A518EBD835FF6B /* Pods-KVOController_Tests-KVOController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-KVOController_Tests-KVOController-prefix.pch"; path = "../Pods-KVOController_Tests-KVOController/Pods-KVOController_Tests-KVOController-prefix.pch"; sourceTree = "<group>"; };
+		D2BDE767704B71DD72FE279E /* Pods-KVOController_Example-KVOController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KVOController_Example-KVOController-dummy.m"; sourceTree = "<group>"; };
+		D752A69D445E232DDC0C58C7 /* Pods-KVOController_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KVOController_Example-umbrella.h"; sourceTree = "<group>"; };
+		D9D08A2EF06FC2CA84AE2DD2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDAFA24E276A2BF90E7A87E5 /* Pods-KVOController_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KVOController_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		DE4D6ADBB927CED7832E86D3 /* Pods-KVOController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KVOController_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		E6DF0C08A9A0ABBA048726A2 /* Pods-KVOController_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KVOController_Tests-dummy.m"; sourceTree = "<group>"; };
+		EC056A2006985C9BD1879EB3 /* Pods-KVOController_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KVOController_Tests-resources.sh"; sourceTree = "<group>"; };
+		F385AAA35F04958BB85421D4 /* Pods-KVOController_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KVOController_Example.modulemap"; sourceTree = "<group>"; };
+		F92F4CD5840929D5920A9D3C /* Pods-KVOController_Example-KVOController-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KVOController_Example-KVOController-Private.xcconfig"; sourceTree = "<group>"; };
+		FC406BBE390FE346B2407F42 /* Pods-KVOController_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KVOController_Example-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D4290E750CB890FCC377BBFE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8A04DC8373CF144BC2CFC4C1 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E8A86899ED0CEAACE5662961 /* Frameworks */ = {
+		3BD0467C5BAC7DFB94789F08 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E90B6DE8526005F7650938C9 /* Frameworks */ = {
+		62F21CFCB58304E745D9BE6E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B9C85C6A2C9D68AEC764BE2 /* Foundation.framework in Frameworks */,
+				9668F51CA169D0B39DCB1EB2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82287A6DD79534AC2F020D66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EF5C07316BC73B7F8C2BE8B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACF04B47DE888748DEE365DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E98A9F2378B995FC25D430E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0B6482799BF3E93116B6875 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB41E7FFE7714778E1475FDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F61C570C7623D7E100CE06CB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		033A5116481C20766F523D9A /* Targets Support Files */ = {
+		0DBFCD498917EB9A03953DC3 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				223F770DF21B83B0BFD99381 /* Pods-KVOController_Tests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		223F770DF21B83B0BFD99381 /* Pods-KVOController_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C62760844A1D3410074BB807 /* Info.plist */,
-				A98F58D21BC7375997CEEE94 /* Pods-KVOController_Tests.modulemap */,
-				25747ACDE5B4138949D5F703 /* Pods-KVOController_Tests-acknowledgements.markdown */,
-				FF98DDC4CB91EEEF5EBD1263 /* Pods-KVOController_Tests-acknowledgements.plist */,
-				A979516E485BE25817259331 /* Pods-KVOController_Tests-dummy.m */,
-				DD191D982D1F418AE534F0A5 /* Pods-KVOController_Tests-environment.h */,
-				96EF04466D583F6B6A59C925 /* Pods-KVOController_Tests-frameworks.sh */,
-				DDD56E803DD89B7A00683AFB /* Pods-KVOController_Tests-resources.sh */,
-				6C744365F56CF75275E1251F /* Pods-KVOController_Tests-umbrella.h */,
-				870D46BAD80C199904C62496 /* Pods-KVOController_Tests.debug.xcconfig */,
-				1E6E1B8C412E01662DF38DF9 /* Pods-KVOController_Tests.release.xcconfig */,
-			);
-			name = "Pods-KVOController_Tests";
-			path = "Target Support Files/Pods-KVOController_Tests";
-			sourceTree = "<group>";
-		};
-		56E6033567DE422C9843DE84 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				54BCEADA1B4262D100564F90 /* KVOTypes.swift */,
-				54BCEAD81B42443000564F90 /* KVOController.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		659DFC5F18D10E5783CFF8E4 = {
-			isa = PBXGroup;
-			children = (
-				7FB22844C95CFAC40489C425 /* Podfile */,
-				8098706867F9B10FA0CBC070 /* Development Pods */,
-				9501DECDE7914092248EFBD8 /* Frameworks */,
-				DC7746F910FB4FDA7BA1B02E /* Products */,
-				033A5116481C20766F523D9A /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		8098706867F9B10FA0CBC070 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CE0FD617528045AC6602D900 /* KVOController */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		87A483F171B4F37540EBD9B7 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				9E80C73385CA867DE02033D8 /* Info.plist */,
-				2B8EA993E72D091622B4A1E4 /* Pods-KVOController_Tests-KVOController.modulemap */,
-				B658A704CC968F17AB97837B /* Pods-KVOController_Tests-KVOController.xcconfig */,
-				D39D01B51D033F26B17D2400 /* Pods-KVOController_Tests-KVOController-Private.xcconfig */,
-				9EC5A1B996446F1CE0BF9B8D /* Pods-KVOController_Tests-KVOController-dummy.m */,
-				21FF71C2CCCDC97FF9D261B6 /* Pods-KVOController_Tests-KVOController-prefix.pch */,
-				54D62808A9A2C0583D26E7A3 /* Pods-KVOController_Tests-KVOController-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/Pods-KVOController_Tests-KVOController";
-			sourceTree = "<group>";
-		};
-		9501DECDE7914092248EFBD8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B08F1D8D87ACAAC9DB6998A5 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9AD9861345460BB9ABB236E4 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				56E6033567DE422C9843DE84 /* Classes */,
+				D42CF26B57559A04CB442E4B /* Classes */,
 			);
 			path = Pod;
 			sourceTree = "<group>";
 		};
-		B08F1D8D87ACAAC9DB6998A5 /* iOS */ = {
+		131FBF71372DDDFEE2540562 /* KVOController */ = {
 			isa = PBXGroup;
 			children = (
-				92DA5A262D49F949B6901A25 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		CE0FD617528045AC6602D900 /* KVOController */ = {
-			isa = PBXGroup;
-			children = (
-				9AD9861345460BB9ABB236E4 /* Pod */,
-				87A483F171B4F37540EBD9B7 /* Support Files */,
+				0DBFCD498917EB9A03953DC3 /* Pod */,
+				2369CF091EE437AA3C8644E0 /* Support Files */,
 			);
 			name = KVOController;
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		DC7746F910FB4FDA7BA1B02E /* Products */ = {
+		2369CF091EE437AA3C8644E0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				47FE61285FD854D3E84501F8 /* KVOController.bundle */,
-				55270A15F62A6594182F9908 /* KVOController.framework */,
-				8809DFF8EFBD64A5CB209EA0 /* Pods_KVOController_Tests.framework */,
+				57B6541CB4A96E0272E4B7C1 /* Info.plist */,
+				11EB677C38A42D563CC6B3BF /* Info.plist */,
+				504630D66F193B5174F15FE4 /* Pods-KVOController_Example-KVOController.modulemap */,
+				1693D690E35632E3DCD8CD23 /* Pods-KVOController_Example-KVOController.xcconfig */,
+				F92F4CD5840929D5920A9D3C /* Pods-KVOController_Example-KVOController-Private.xcconfig */,
+				D2BDE767704B71DD72FE279E /* Pods-KVOController_Example-KVOController-dummy.m */,
+				766E293EA725857F46AAB4B0 /* Pods-KVOController_Example-KVOController-prefix.pch */,
+				00FF31AACD68D1BA8EE15BB8 /* Pods-KVOController_Example-KVOController-umbrella.h */,
+				20884D0987C98AC8F3B13C96 /* Pods-KVOController_Tests-KVOController.modulemap */,
+				8A8E25EC2915444A61EF98C8 /* Pods-KVOController_Tests-KVOController.xcconfig */,
+				01C8B4C0D3D659EEDF7329E5 /* Pods-KVOController_Tests-KVOController-Private.xcconfig */,
+				637FCB6BEABF9BBD11F6FD28 /* Pods-KVOController_Tests-KVOController-dummy.m */,
+				CF1698C715A518EBD835FF6B /* Pods-KVOController_Tests-KVOController-prefix.pch */,
+				6540C9FA1D3337608367FA50 /* Pods-KVOController_Tests-KVOController-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Pods-KVOController_Example-KVOController";
+			sourceTree = "<group>";
+		};
+		2A99F5A009C620FCE62B1CE3 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				4C3457719717A9229021F6DF /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		49AB30094925AEAF8572DDA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A99F5A009C620FCE62B1CE3 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		56C95477F019F35B229FA6A4 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C251AD71E04316950E7C94FD /* Pods-KVOController_Example */,
+				69D9003A2914DBD318E0C53F /* Pods-KVOController_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		685D2A9F00E9FA9D18DBD041 = {
+			isa = PBXGroup;
+			children = (
+				102C957D93D8508DB7130058 /* Podfile */,
+				A4F0375E55A945F62CD0351B /* Development Pods */,
+				49AB30094925AEAF8572DDA4 /* Frameworks */,
+				92AF9C6908E9534FBC73327C /* Products */,
+				56C95477F019F35B229FA6A4 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		69D9003A2914DBD318E0C53F /* Pods-KVOController_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				67A5B3CA87892A10994059E4 /* Info.plist */,
+				C804E546AAC8B1F86ECFA6BA /* Pods-KVOController_Tests.modulemap */,
+				2CD1F8A05C139D5789A5E34E /* Pods-KVOController_Tests-acknowledgements.markdown */,
+				8F7B578EFEAD971B5AEFC9D3 /* Pods-KVOController_Tests-acknowledgements.plist */,
+				E6DF0C08A9A0ABBA048726A2 /* Pods-KVOController_Tests-dummy.m */,
+				3D90448851F9DB4D797B5020 /* Pods-KVOController_Tests-environment.h */,
+				DDAFA24E276A2BF90E7A87E5 /* Pods-KVOController_Tests-frameworks.sh */,
+				EC056A2006985C9BD1879EB3 /* Pods-KVOController_Tests-resources.sh */,
+				808C94A0DD98BC673138AC14 /* Pods-KVOController_Tests-umbrella.h */,
+				193920B29C7683F39A9FC95C /* Pods-KVOController_Tests.debug.xcconfig */,
+				DE4D6ADBB927CED7832E86D3 /* Pods-KVOController_Tests.release.xcconfig */,
+			);
+			name = "Pods-KVOController_Tests";
+			path = "Target Support Files/Pods-KVOController_Tests";
+			sourceTree = "<group>";
+		};
+		92AF9C6908E9534FBC73327C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BBAA8F5331E6F6208B5E47D9 /* KVOController.bundle */,
+				2C6ED8CFD8B529CA2A7DE636 /* KVOController.bundle */,
+				74C742DE4F6B202EA93CBB6E /* KVOController.framework */,
+				5CCB4A940890012AF2FB008D /* KVOController.framework */,
+				B7137301BB6C076E0C381EC8 /* Pods_KVOController_Example.framework */,
+				3333DE2B8A83EB8597A2694A /* Pods_KVOController_Tests.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A4F0375E55A945F62CD0351B /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				131FBF71372DDDFEE2540562 /* KVOController */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		C251AD71E04316950E7C94FD /* Pods-KVOController_Example */ = {
+			isa = PBXGroup;
+			children = (
+				D9D08A2EF06FC2CA84AE2DD2 /* Info.plist */,
+				F385AAA35F04958BB85421D4 /* Pods-KVOController_Example.modulemap */,
+				8CB1417231B579D7CB1391BC /* Pods-KVOController_Example-acknowledgements.markdown */,
+				437BA65F85BF90E64F4E19BA /* Pods-KVOController_Example-acknowledgements.plist */,
+				40D2025B12DB12CD70F8977C /* Pods-KVOController_Example-dummy.m */,
+				70565DB4BCB788B855B54DA4 /* Pods-KVOController_Example-environment.h */,
+				FC406BBE390FE346B2407F42 /* Pods-KVOController_Example-frameworks.sh */,
+				CADC43161279B4BAD08E4FE5 /* Pods-KVOController_Example-resources.sh */,
+				D752A69D445E232DDC0C58C7 /* Pods-KVOController_Example-umbrella.h */,
+				47411E40D00C7AF836032F5C /* Pods-KVOController_Example.debug.xcconfig */,
+				2773DBE54F420852F20F9878 /* Pods-KVOController_Example.release.xcconfig */,
+			);
+			name = "Pods-KVOController_Example";
+			path = "Target Support Files/Pods-KVOController_Example";
+			sourceTree = "<group>";
+		};
+		D42CF26B57559A04CB442E4B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				549A1C681B5F860E009D529E /* KVOTypes.swift */,
+				549A1C691B5F860E009D529E /* KVOController.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		47D7349FFFFCF1A77AE2DCF7 /* Headers */ = {
+		5F64A046AF6C61E6CB80C141 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A85590765F6A3D6C45D46D0 /* Pods-KVOController_Tests-KVOController-umbrella.h in Headers */,
+				073521F8003E0B216A7FB57D /* Pods-KVOController_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5AF95C3513F1D4FA4BE14F3D /* Headers */ = {
+		A6C7EBE057805BB8B3FB43E4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDC002AB5874E695A48EAAD8 /* Pods-KVOController_Tests-umbrella.h in Headers */,
+				FE2AC94CC415C7C0095B16B6 /* Pods-KVOController_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B532917E23DB443D30A66E97 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C76B83649F9E8B117A988F03 /* Pods-KVOController_Tests-KVOController-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D25ED9C8295C84B79FB84D2A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A09CACA9D11C55FD042E965C /* Pods-KVOController_Example-KVOController-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5139AFA9DD7C9FCCDFBE97AC /* Pods-KVOController_Tests */ = {
+		14C1F8EBACA826C3B62443C2 /* Pods-KVOController_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD537C610EC5A62FC91DB29F /* Build configuration list for PBXNativeTarget "Pods-KVOController_Tests" */;
+			buildConfigurationList = 7684219CB06222FBF84C1E36 /* Build configuration list for PBXNativeTarget "Pods-KVOController_Tests" */;
 			buildPhases = (
-				7CFE1382CBE294E750633351 /* Sources */,
-				E90B6DE8526005F7650938C9 /* Frameworks */,
-				5AF95C3513F1D4FA4BE14F3D /* Headers */,
+				4F7AE4013CC947432D27F2A5 /* Sources */,
+				82287A6DD79534AC2F020D66 /* Frameworks */,
+				A6C7EBE057805BB8B3FB43E4 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D42016A696BB666260836AB5 /* PBXTargetDependency */,
+				3DBD6322F26CBD5CDD759CC9 /* PBXTargetDependency */,
 			);
 			name = "Pods-KVOController_Tests";
 			productName = "Pods-KVOController_Tests";
-			productReference = 8809DFF8EFBD64A5CB209EA0 /* Pods_KVOController_Tests.framework */;
+			productReference = 3333DE2B8A83EB8597A2694A /* Pods_KVOController_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		61015730E9398CD59352F965 /* Pods-KVOController_Tests-KVOController-KVOController */ = {
+		498F1F105D852B1DD74763C1 /* Pods-KVOController_Tests-KVOController-KVOController */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 16F868651CE307B49ABF0F90 /* Build configuration list for PBXNativeTarget "Pods-KVOController_Tests-KVOController-KVOController" */;
+			buildConfigurationList = 2E523DDFBA30770D38F1F767 /* Build configuration list for PBXNativeTarget "Pods-KVOController_Tests-KVOController-KVOController" */;
 			buildPhases = (
-				19A8661B13D88F5548C3074C /* Sources */,
-				E8A86899ED0CEAACE5662961 /* Frameworks */,
-				12B4D73A36934F93EA11370F /* Resources */,
+				0177921630317412D8C0F28A /* Sources */,
+				3BD0467C5BAC7DFB94789F08 /* Frameworks */,
+				13519A1E51CC0411731FD401 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -258,174 +371,229 @@
 			);
 			name = "Pods-KVOController_Tests-KVOController-KVOController";
 			productName = "Pods-KVOController_Tests-KVOController-KVOController";
-			productReference = 47FE61285FD854D3E84501F8 /* KVOController.bundle */;
+			productReference = BBAA8F5331E6F6208B5E47D9 /* KVOController.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		77B722496BA0567F4861E653 /* Pods-KVOController_Tests-KVOController */ = {
+		612FC01022C1149C0C2461C6 /* Pods-KVOController_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D31CC213754B4520AC82FD7C /* Build configuration list for PBXNativeTarget "Pods-KVOController_Tests-KVOController" */;
+			buildConfigurationList = ADA13C80970C32580F330EF8 /* Build configuration list for PBXNativeTarget "Pods-KVOController_Example" */;
 			buildPhases = (
-				5592C95B56AB913A9724DD45 /* Sources */,
-				D4290E750CB890FCC377BBFE /* Frameworks */,
-				AA3D7C54FD1B45AB123CB2E0 /* Resources */,
-				47D7349FFFFCF1A77AE2DCF7 /* Headers */,
+				9108F555BDA04A0CB347B8B6 /* Sources */,
+				FB41E7FFE7714778E1475FDF /* Frameworks */,
+				5F64A046AF6C61E6CB80C141 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				44ADB58B412FCCF8C46A5FA6 /* PBXTargetDependency */,
+				A9AFD6D1B86EFC5A5A4E0965 /* PBXTargetDependency */,
+			);
+			name = "Pods-KVOController_Example";
+			productName = "Pods-KVOController_Example";
+			productReference = B7137301BB6C076E0C381EC8 /* Pods_KVOController_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		766D1DA41DAFBDBFDD41EF38 /* Pods-KVOController_Tests-KVOController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C579FDB32076F41960BAD0CD /* Build configuration list for PBXNativeTarget "Pods-KVOController_Tests-KVOController" */;
+			buildPhases = (
+				FD0CA3920AB3FC579393D4E2 /* Sources */,
+				E98A9F2378B995FC25D430E8 /* Frameworks */,
+				06625DE7768AAC0622245F76 /* Resources */,
+				B532917E23DB443D30A66E97 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1CD5114916A544539B8014D6 /* PBXTargetDependency */,
 			);
 			name = "Pods-KVOController_Tests-KVOController";
 			productName = "Pods-KVOController_Tests-KVOController";
-			productReference = 55270A15F62A6594182F9908 /* KVOController.framework */;
+			productReference = 5CCB4A940890012AF2FB008D /* KVOController.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		D16EA94C6CE6728EB302D175 /* Pods-KVOController_Example-KVOController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FEC013C8AA322752272F142D /* Build configuration list for PBXNativeTarget "Pods-KVOController_Example-KVOController" */;
+			buildPhases = (
+				19AD51E2EDAE7C5ADE9C59C3 /* Sources */,
+				62F21CFCB58304E745D9BE6E /* Frameworks */,
+				F711637851DF9727906D5138 /* Resources */,
+				D25ED9C8295C84B79FB84D2A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB2D8B15736DF5F00A3F41FE /* PBXTargetDependency */,
+			);
+			name = "Pods-KVOController_Example-KVOController";
+			productName = "Pods-KVOController_Example-KVOController";
+			productReference = 74C742DE4F6B202EA93CBB6E /* KVOController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FCE105F504C7090779FC6D8F /* Pods-KVOController_Example-KVOController-KVOController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 026B40209A697EB0F83F50C6 /* Build configuration list for PBXNativeTarget "Pods-KVOController_Example-KVOController-KVOController" */;
+			buildPhases = (
+				DA8A91602510C769769B178E /* Sources */,
+				ACF04B47DE888748DEE365DE /* Frameworks */,
+				8B5BA0C3BD3A5092515ACB02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-KVOController_Example-KVOController-KVOController";
+			productName = "Pods-KVOController_Example-KVOController-KVOController";
+			productReference = 2C6ED8CFD8B529CA2A7DE636 /* KVOController.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CF2AEB47173D3275932CFF0F /* Project object */ = {
+		CE8BDCF79A3513A658ADE323 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
 			};
-			buildConfigurationList = E68C2E294E22CFE09EC47906 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 9B5BED3C0776EF09A35F109F /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 659DFC5F18D10E5783CFF8E4;
-			productRefGroup = DC7746F910FB4FDA7BA1B02E /* Products */;
+			mainGroup = 685D2A9F00E9FA9D18DBD041;
+			productRefGroup = 92AF9C6908E9534FBC73327C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5139AFA9DD7C9FCCDFBE97AC /* Pods-KVOController_Tests */,
-				77B722496BA0567F4861E653 /* Pods-KVOController_Tests-KVOController */,
-				61015730E9398CD59352F965 /* Pods-KVOController_Tests-KVOController-KVOController */,
+				612FC01022C1149C0C2461C6 /* Pods-KVOController_Example */,
+				D16EA94C6CE6728EB302D175 /* Pods-KVOController_Example-KVOController */,
+				FCE105F504C7090779FC6D8F /* Pods-KVOController_Example-KVOController-KVOController */,
+				14C1F8EBACA826C3B62443C2 /* Pods-KVOController_Tests */,
+				766D1DA41DAFBDBFDD41EF38 /* Pods-KVOController_Tests-KVOController */,
+				498F1F105D852B1DD74763C1 /* Pods-KVOController_Tests-KVOController-KVOController */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		12B4D73A36934F93EA11370F /* Resources */ = {
+		06625DE7768AAC0622245F76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				598FB4208EEF995398BAB8D8 /* KVOController.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13519A1E51CC0411731FD401 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA3D7C54FD1B45AB123CB2E0 /* Resources */ = {
+		8B5BA0C3BD3A5092515ACB02 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BB681C6984C3C5A22BA57C8 /* KVOController.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F711637851DF9727906D5138 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84927D8D79B04AD2C9C82FAB /* KVOController.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		19A8661B13D88F5548C3074C /* Sources */ = {
+		0177921630317412D8C0F28A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5592C95B56AB913A9724DD45 /* Sources */ = {
+		19AD51E2EDAE7C5ADE9C59C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54BCEADB1B4262D100564F90 /* KVOTypes.swift in Sources */,
-				54BCEAD91B42443000564F90 /* KVOController.swift in Sources */,
-				8EC04E7263776AC60A2F9552 /* Pods-KVOController_Tests-KVOController-dummy.m in Sources */,
+				549A1C6A1B5F860E009D529E /* KVOTypes.swift in Sources */,
+				ED65B97851D1E2AFB2B8CC94 /* Pods-KVOController_Example-KVOController-dummy.m in Sources */,
+				549A1C6C1B5F860E009D529E /* KVOController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7CFE1382CBE294E750633351 /* Sources */ = {
+		4F7AE4013CC947432D27F2A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60F48A265A699943D27ACF24 /* Pods-KVOController_Tests-dummy.m in Sources */,
+				F60A2C683F140E8A2DBEFDB4 /* Pods-KVOController_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9108F555BDA04A0CB347B8B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13939C7B8A53543C01ADC163 /* Pods-KVOController_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA8A91602510C769769B178E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD0CA3920AB3FC579393D4E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				549A1C6B1B5F860E009D529E /* KVOTypes.swift in Sources */,
+				24B790D4B48CEBECAF161575 /* Pods-KVOController_Tests-KVOController-dummy.m in Sources */,
+				549A1C6D1B5F860E009D529E /* KVOController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		44ADB58B412FCCF8C46A5FA6 /* PBXTargetDependency */ = {
+		1CD5114916A544539B8014D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-KVOController_Tests-KVOController-KVOController";
-			target = 61015730E9398CD59352F965 /* Pods-KVOController_Tests-KVOController-KVOController */;
-			targetProxy = F0A01A8C8FF0F32A3D935949 /* PBXContainerItemProxy */;
+			target = 498F1F105D852B1DD74763C1 /* Pods-KVOController_Tests-KVOController-KVOController */;
+			targetProxy = 930865839A73D4193FBD4442 /* PBXContainerItemProxy */;
 		};
-		D42016A696BB666260836AB5 /* PBXTargetDependency */ = {
+		3DBD6322F26CBD5CDD759CC9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-KVOController_Tests-KVOController";
-			target = 77B722496BA0567F4861E653 /* Pods-KVOController_Tests-KVOController */;
-			targetProxy = 1ED33CD6D1F06A09CBDBB8A5 /* PBXContainerItemProxy */;
+			target = 766D1DA41DAFBDBFDD41EF38 /* Pods-KVOController_Tests-KVOController */;
+			targetProxy = 69C1EEA1260CC699964637E4 /* PBXContainerItemProxy */;
+		};
+		A9AFD6D1B86EFC5A5A4E0965 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-KVOController_Example-KVOController";
+			target = D16EA94C6CE6728EB302D175 /* Pods-KVOController_Example-KVOController */;
+			targetProxy = 4494509645899CF3253A1D4C /* PBXContainerItemProxy */;
+		};
+		EB2D8B15736DF5F00A3F41FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-KVOController_Example-KVOController-KVOController";
+			target = FCE105F504C7090779FC6D8F /* Pods-KVOController_Example-KVOController-KVOController */;
+			targetProxy = B64BD58CC2FA85CF49FF4904 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1A7FEEDD92D235931B02FB6F /* Debug */ = {
+		01EBAA3D327DD685B6076FF9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D39D01B51D033F26B17D2400 /* Pods-KVOController_Tests-KVOController-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-KVOController_Tests-KVOController/Pods-KVOController_Tests-KVOController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pods-KVOController_Tests-KVOController/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-KVOController_Tests-KVOController/Pods-KVOController_Tests-KVOController.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = KVOController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2986D0710296F0270DFE8438 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D39D01B51D033F26B17D2400 /* Pods-KVOController_Tests-KVOController-Private.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-KVOController_Tests";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = KVOController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		37C6523C76B8A4D52D184B51 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D39D01B51D033F26B17D2400 /* Pods-KVOController_Tests-KVOController-Private.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-KVOController_Tests";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = KVOController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		7D20AE081FACE75020B416F0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D39D01B51D033F26B17D2400 /* Pods-KVOController_Tests-KVOController-Private.xcconfig */;
+			baseConfigurationReference = 01C8B4C0D3D659EEDF7329E5 /* Pods-KVOController_Tests-KVOController-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -450,7 +618,106 @@
 			};
 			name = Release;
 		};
-		A31B0D3D7297C6674736EE35 /* Debug */ = {
+		074C5CF464A94F16960446FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01C8B4C0D3D659EEDF7329E5 /* Pods-KVOController_Tests-KVOController-Private.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-KVOController_Tests";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = KVOController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		223FB609D6DC6A9F7A9AB950 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 193920B29C7683F39A9FC95C /* Pods-KVOController_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KVOController_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-KVOController_Tests/Pods-KVOController_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_KVOController_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3A620B6AC7C269EF120CABBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F92F4CD5840929D5920A9D3C /* Pods-KVOController_Example-KVOController-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-KVOController_Example-KVOController/Pods-KVOController_Example-KVOController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-KVOController_Example-KVOController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-KVOController_Example-KVOController/Pods-KVOController_Example-KVOController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = KVOController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		73BD5CD7FA369FC6941F4C1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE4D6ADBB927CED7832E86D3 /* Pods-KVOController_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KVOController_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-KVOController_Tests/Pods-KVOController_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_KVOController_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		772364728708FBE0DB1DAD86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -489,7 +756,104 @@
 			};
 			name = Debug;
 		};
-		AA34090BCAE4E51064019A7F /* Release */ = {
+		7B091901A04724229799FC0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01C8B4C0D3D659EEDF7329E5 /* Pods-KVOController_Tests-KVOController-Private.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-KVOController_Tests";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = KVOController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		8A6E9C4576B8109C928F83B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F92F4CD5840929D5920A9D3C /* Pods-KVOController_Example-KVOController-Private.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-KVOController_Example";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = KVOController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		AC9B28D376DAA44BD55E86F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47411E40D00C7AF836032F5C /* Pods-KVOController_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KVOController_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-KVOController_Example/Pods-KVOController_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_KVOController_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BF580A150BBE8EABC5FEF818 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F92F4CD5840929D5920A9D3C /* Pods-KVOController_Example-KVOController-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-KVOController_Example-KVOController/Pods-KVOController_Example-KVOController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-KVOController_Example-KVOController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-KVOController_Example-KVOController/Pods-KVOController_Example-KVOController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = KVOController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D7854271AE5CDF4F907380BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F92F4CD5840929D5920A9D3C /* Pods-KVOController_Example-KVOController-Private.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-KVOController_Example";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = KVOController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		DF54A8B81CDEBACC5AD33BB3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -523,9 +887,9 @@
 			};
 			name = Release;
 		};
-		B33AE4AAEB54156BDC342531 /* Release */ = {
+		E2B77FC1177AE642374426E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E6E1B8C412E01662DF38DF9 /* Pods-KVOController_Tests.release.xcconfig */;
+			baseConfigurationReference = 01C8B4C0D3D659EEDF7329E5 /* Pods-KVOController_Tests-KVOController-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -534,45 +898,14 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-KVOController_Tests/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-KVOController_Tests-KVOController/Pods-KVOController_Tests-KVOController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-KVOController_Tests-KVOController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-KVOController_Tests/Pods-KVOController_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_KVOController_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		F3F5F06A2F14BF0BC4154DE8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 870D46BAD80C199904C62496 /* Pods-KVOController_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-KVOController_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-KVOController_Tests/Pods-KVOController_Tests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-KVOController_Tests-KVOController/Pods-KVOController_Tests-KVOController.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_KVOController_Tests;
+				PRODUCT_NAME = KVOController;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -582,46 +915,102 @@
 			};
 			name = Debug;
 		};
+		E3061F353DAFAB0436AD3537 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2773DBE54F420852F20F9878 /* Pods-KVOController_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KVOController_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-KVOController_Example/Pods-KVOController_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_KVOController_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		16F868651CE307B49ABF0F90 /* Build configuration list for PBXNativeTarget "Pods-KVOController_Tests-KVOController-KVOController" */ = {
+		026B40209A697EB0F83F50C6 /* Build configuration list for PBXNativeTarget "Pods-KVOController_Example-KVOController-KVOController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				37C6523C76B8A4D52D184B51 /* Debug */,
-				2986D0710296F0270DFE8438 /* Release */,
+				8A6E9C4576B8109C928F83B5 /* Debug */,
+				D7854271AE5CDF4F907380BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD537C610EC5A62FC91DB29F /* Build configuration list for PBXNativeTarget "Pods-KVOController_Tests" */ = {
+		2E523DDFBA30770D38F1F767 /* Build configuration list for PBXNativeTarget "Pods-KVOController_Tests-KVOController-KVOController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3F5F06A2F14BF0BC4154DE8 /* Debug */,
-				B33AE4AAEB54156BDC342531 /* Release */,
+				074C5CF464A94F16960446FD /* Debug */,
+				7B091901A04724229799FC0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D31CC213754B4520AC82FD7C /* Build configuration list for PBXNativeTarget "Pods-KVOController_Tests-KVOController" */ = {
+		7684219CB06222FBF84C1E36 /* Build configuration list for PBXNativeTarget "Pods-KVOController_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A7FEEDD92D235931B02FB6F /* Debug */,
-				7D20AE081FACE75020B416F0 /* Release */,
+				223FB609D6DC6A9F7A9AB950 /* Debug */,
+				73BD5CD7FA369FC6941F4C1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E68C2E294E22CFE09EC47906 /* Build configuration list for PBXProject "Pods" */ = {
+		9B5BED3C0776EF09A35F109F /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A31B0D3D7297C6674736EE35 /* Debug */,
-				AA34090BCAE4E51064019A7F /* Release */,
+				772364728708FBE0DB1DAD86 /* Debug */,
+				DF54A8B81CDEBACC5AD33BB3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADA13C80970C32580F330EF8 /* Build configuration list for PBXNativeTarget "Pods-KVOController_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC9B28D376DAA44BD55E86F9 /* Debug */,
+				E3061F353DAFAB0436AD3537 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C579FDB32076F41960BAD0CD /* Build configuration list for PBXNativeTarget "Pods-KVOController_Tests-KVOController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2B77FC1177AE642374426E9 /* Debug */,
+				01EBAA3D327DD685B6076FF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FEC013C8AA322752272F142D /* Build configuration list for PBXNativeTarget "Pods-KVOController_Example-KVOController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF580A150BBE8EABC5FEF818 /* Debug */,
+				3A620B6AC7C269EF120CABBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CF2AEB47173D3275932CFF0F /* Project object */;
+	rootObject = CE8BDCF79A3513A658ADE323 /* Project object */;
 }

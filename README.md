@@ -1,7 +1,5 @@
 # KVOController
 
-Still in development
-<!---
 [![CI Status](http://img.shields.io/travis/Mohamed Afifi/KVOController.svg?style=flat)](https://travis-ci.org/Mohamed Afifi/KVOController)
 [![Version](https://img.shields.io/cocoapods/v/KVOController.svg?style=flat)](http://cocoapods.org/pods/KVOController)
 [![License](https://img.shields.io/cocoapods/l/KVOController.svg?style=flat)](http://cocoapods.org/pods/KVOController)
@@ -21,7 +19,7 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "KVOController"
 ```
--->
+
 ## Author
 
 Mohamed Afifi, mohamede1945@gmail.com
