@@ -10,8 +10,6 @@
 		073521F8003E0B216A7FB57D /* Pods-KVOController_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D752A69D445E232DDC0C58C7 /* Pods-KVOController_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13939C7B8A53543C01ADC163 /* Pods-KVOController_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D2025B12DB12CD70F8977C /* Pods-KVOController_Example-dummy.m */; };
 		24B790D4B48CEBECAF161575 /* Pods-KVOController_Tests-KVOController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 637FCB6BEABF9BBD11F6FD28 /* Pods-KVOController_Tests-KVOController-dummy.m */; };
-		549A1C6A1B5F860E009D529E /* KVOTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A1C681B5F860E009D529E /* KVOTypes.swift */; };
-		549A1C6B1B5F860E009D529E /* KVOTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A1C681B5F860E009D529E /* KVOTypes.swift */; };
 		549A1C6C1B5F860E009D529E /* KVOController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A1C691B5F860E009D529E /* KVOController.swift */; };
 		549A1C6D1B5F860E009D529E /* KVOController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A1C691B5F860E009D529E /* KVOController.swift */; };
 		598FB4208EEF995398BAB8D8 /* KVOController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BBAA8F5331E6F6208B5E47D9 /* KVOController.bundle */; };
@@ -76,7 +74,6 @@
 		47411E40D00C7AF836032F5C /* Pods-KVOController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KVOController_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		4C3457719717A9229021F6DF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		504630D66F193B5174F15FE4 /* Pods-KVOController_Example-KVOController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KVOController_Example-KVOController.modulemap"; sourceTree = "<group>"; };
-		549A1C681B5F860E009D529E /* KVOTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVOTypes.swift; sourceTree = "<group>"; };
 		549A1C691B5F860E009D529E /* KVOController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVOController.swift; sourceTree = "<group>"; };
 		57B6541CB4A96E0272E4B7C1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CCB4A940890012AF2FB008D /* KVOController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KVOController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -295,7 +292,6 @@
 		D42CF26B57559A04CB442E4B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				549A1C681B5F860E009D529E /* KVOTypes.swift */,
 				549A1C691B5F860E009D529E /* KVOController.swift */,
 			);
 			path = Classes;
@@ -522,7 +518,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				549A1C6A1B5F860E009D529E /* KVOTypes.swift in Sources */,
 				ED65B97851D1E2AFB2B8CC94 /* Pods-KVOController_Example-KVOController-dummy.m in Sources */,
 				549A1C6C1B5F860E009D529E /* KVOController.swift in Sources */,
 			);
@@ -555,7 +550,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				549A1C6B1B5F860E009D529E /* KVOTypes.swift in Sources */,
 				24B790D4B48CEBECAF161575 /* Pods-KVOController_Tests-KVOController-dummy.m in Sources */,
 				549A1C6D1B5F860E009D529E /* KVOController.swift in Sources */,
 			);
