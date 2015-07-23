@@ -3,7 +3,7 @@
 //  KVOController
 //
 //  Created by Mohamed Afifi on 07/22/2015.
-//  Copyright (c) 2015 Mohamed Afifi. All rights reserved.
+//  Copyright (c) 2015 mohamede1945. All rights reserved.
 //
 
 import UIKit

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F99C75018A98DCDACEC7AD0 /* Pods_KVOController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 353B36F62371C0D35FB7D3A4 /* Pods_KVOController_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		51C1D38ECC21C3B3F465C396 /* Pods_KVOController_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EF9412E694C37E9D04A358F /* Pods_KVOController_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		549A1C6F1B60B6A2009D529E /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A1C6E1B60B6A2009D529E /* Clock.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		2407AFAAF202107FB253AEF4 /* Pods-KVOController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KVOController_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KVOController_Tests/Pods-KVOController_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		353B36F62371C0D35FB7D3A4 /* Pods_KVOController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KVOController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		549A1C6E1B60B6A2009D529E /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		56765A52254ECE0C31D825D9 /* Pods-KVOController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KVOController_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KVOController_Example/Pods-KVOController_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		5EF9412E694C37E9D04A358F /* Pods_KVOController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KVOController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* KVOController_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KVOController_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,7 +41,7 @@
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		607FACE51AFB9204008FA782 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Tests.xctest; path = KVOController_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		607FACE51AFB9204008FA782 /* KVOController_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KVOController_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7464E461648CC338E27318DE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -85,7 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD01AFB9204008FA782 /* KVOController_Example.app */,
-				607FACE51AFB9204008FA782 /* Tests.xctest */,
+				607FACE51AFB9204008FA782 /* KVOController_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,6 +101,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				549A1C6E1B60B6A2009D529E /* Clock.swift */,
 			);
 			name = "Example for KVOController";
 			path = KVOController;
@@ -200,7 +203,7 @@
 			);
 			name = KVOController_Tests;
 			productName = Tests;
-			productReference = 607FACE51AFB9204008FA782 /* Tests.xctest */;
+			productReference = 607FACE51AFB9204008FA782 /* KVOController_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -210,7 +213,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0630;
-				ORGANIZATIONNAME = CocoaPods;
+				ORGANIZATIONNAME = Varaw;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -358,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				549A1C6F1B60B6A2009D529E /* Clock.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

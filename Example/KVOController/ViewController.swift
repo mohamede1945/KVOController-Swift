@@ -3,21 +3,34 @@
 //  KVOController
 //
 //  Created by Mohamed Afifi on 07/22/2015.
-//  Copyright (c) 2015 Mohamed Afifi. All rights reserved.
+//  Copyright (c) 2015 mohamede1945. All rights reserved.
 //
 
 import UIKit
+import KVOController
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var timeLabel: UILabel!
+
+    private let clock = Clock()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = NSDateFormatterStyle.LongStyle
+        formatter.dateStyle = NSDateFormatterStyle.NoStyle
+
+        observe(retainedObservable: clock, keyPath: "date", options: .New | .Initial) { [weak self] (observable: Clock, change: Change<NSDate>) -> () in
+            if let date = change.newValue {
+                self?.timeLabel.text = formatter.stringFromDate(date)
+            }
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    deinit {
+        NSLog("Dealocated")
     }
 
 }

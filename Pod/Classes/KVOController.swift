@@ -6,15 +6,17 @@
 //  Copyright (c) 2015 Varaw. All rights reserved.
 //
 
+public typealias Observable = NSObject
+
 private var KVOControllerObjectAssociationKey : UInt8 = 0
 
 public extension NSObject {
 
-    public func observe<ObservableType : AnyObject, PropertyType>(
-        #retainedObservable: ObservableType,
+    public func observe<Observable : NSObject, PropertyType>(
+        #retainedObservable: Observable,
         keyPath: String,
         options: NSKeyValueObservingOptions,
-        block: ClosureObserverWay<ObservableType, PropertyType>.ObservingBlock) -> Controller<ClosureObserverWay<ObservableType, PropertyType>> {
+        block: ClosureObserverWay<Observable, PropertyType>.ObservingBlock) -> Controller<ClosureObserverWay<Observable, PropertyType>> {
 
             let closure = ClosureObserverWay(block: block)
             let controller = Controller(retainedObservable: retainedObservable, keyPath: keyPath, options: options, observerWay: closure)
@@ -22,7 +24,7 @@ public extension NSObject {
             return controller
     }
 
-    public func observe<ObservableType : AnyObject, PropertyType>(
+    public func observe<ObservableType : Observable, PropertyType>(
         #nonretainedObservable: ObservableType,
         keyPath: String,
         options: NSKeyValueObservingOptions,
@@ -67,8 +69,9 @@ public extension NSObject {
     private func listOfObservers() -> [KVOObserver] {
         var associatedObject : AnyObject? =  objc_getAssociatedObject(self, &KVOControllerObjectAssociationKey)
         var observers: [KVOObserver]
-        if let associatedObject = associatedObject as? [KVOObserver] {
-            observers = associatedObject
+        if let associatedObject = associatedObject as? ObjectWrapper,
+            observersArray = associatedObject.any as? [KVOObserver] {
+            observers = observersArray
         } else {
             observers = [KVOObserver]()
         }
@@ -78,13 +81,20 @@ public extension NSObject {
     private func addObserver(observer: KVOObserver) {
         var observers = listOfObservers()
         observers.append(observer)
+
+        let wrapper = ObjectWrapper(any: observers)
+        objc_setAssociatedObject(self, &KVOControllerObjectAssociationKey, wrapper, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
     }
 
+    private class ObjectWrapper {
+        var any: Any
+        init(any: Any) {
+            self.any = any
+        }
+    }
 }
 
-public typealias Observable = AnyObject
-
-public struct Change<T> {
+public struct Change<T> : Printable {
 
     public let kind: NSKeyValueChange  // NSKeyValueChangeKindKey
 
@@ -99,25 +109,51 @@ public struct Change<T> {
     init(change: [NSObject: AnyObject]) {
 
         // mandatory
+        println("change: \(change)")
         kind = NSKeyValueChange(rawValue: change[NSKeyValueChangeKindKey]!.unsignedLongValue)!
-        isPrior  = change[NSKeyValueChangeNotificationIsPriorKey] as! Bool
+        if let prior = change[NSKeyValueChangeNotificationIsPriorKey] as? Bool {
+            isPrior  = prior
+        } else {
+            isPrior = false
+        }
 
         // optional
         newValue = change[NSKeyValueChangeNewKey] as? T
         oldValue = change[NSKeyValueChangeOldKey] as? T
         indexes  = change[NSKeyValueChangeIndexesKey] as? NSIndexSet
     }
+
+    public var description: String {
+
+        var description = "<Change kind: \(kindDescription(kind))"
+        if isPrior {
+            description += "prior: true"
+        }
+        if let newValue = newValue {
+            description += " new: \(newValue)"
+        }
+        if let oldValue = oldValue {
+            description += " old: \(oldValue)"
+        }
+
+        if let indexes = indexes {
+            description += " indexes: \(indexes)"
+        }
+        description += ">"
+
+        return description
+    }
 }
 
 public protocol ObserverWay {
 
-    typealias ObservableType : AnyObject
+    typealias ObservableType : Observable
     typealias PropertyType
 
     func valueChanged(observable: ObservableType, change: Change<PropertyType>)
 }
 
-public struct ClosureObserverWay<ObservableType : AnyObject, PropertyType> : ObserverWay {
+public struct ClosureObserverWay<ObservableType : Observable, PropertyType> : ObserverWay {
 
     public typealias ObservingBlock = (observable: ObservableType, change: Change<PropertyType>) -> ()
 
@@ -137,7 +173,7 @@ private enum ObservableStorage {
     case Nonretained
 }
 
-public class Controller<ObserverWay : ObserverWay> : _KVOObserver, KVOObserver {
+public class Controller<ObserverWay : ObserverWay> : _KVOObserver, KVOObserver, Printable {
 
     public let keyPath: String
     public let options: NSKeyValueObservingOptions
@@ -217,12 +253,17 @@ public class Controller<ObserverWay : ObserverWay> : _KVOObserver, KVOObserver {
         return false
 
     }
+
+    public var description: String {
+        var description = "<Controller options: \(optionDescription(options)) keyPath: \(keyPath) observable: \(observable) observing: \(observing)>"
+        return description
+    }
 }
 
 // MARK:- Private Classes
 
 @objc
-private class ControllerProxy: NSObject, _KVOObserver {
+private class ControllerProxy: NSObject, _KVOObserver, Printable {
 
     unowned var observer: _KVOObserver
 
@@ -248,6 +289,11 @@ private class ControllerProxy: NSObject, _KVOObserver {
 
     class func fromPointer(pointer: UnsafeMutablePointer<ControllerProxy>) -> ControllerProxy {
         return Unmanaged<ControllerProxy>.fromOpaque(COpaquePointer(pointer)).takeUnretainedValue()
+    }
+
+    override var description: String {
+        var description = String(format: "<%@:%p observer: \(observer)>", arguments: [NSStringFromClass(self.dynamicType), self])
+        return description
     }
 }
 
@@ -279,6 +325,9 @@ private class SharedObserverController : NSObject {
 
             assert(context != nil,
                 "Context is missing for keyPath:'\(keyPath)' of observable:'\(observable)', change:'\(change)'")
+            assert(observable is NSObject, "Observable object should be of type NSObject")
+
+            let observableObject = observable as! NSObject
 
             let pointer = UnsafeMutablePointer<ControllerProxy>(context)
             let contextObserver = ControllerProxy.fromPointer(pointer)
@@ -288,7 +337,7 @@ private class SharedObserverController : NSObject {
             }
 
             if let info = info {
-                info.valueChanged(observable, change: change)
+                info.valueChanged(observableObject, change: change)
             }
     }
     
@@ -296,6 +345,23 @@ private class SharedObserverController : NSObject {
         OSSpinLockLock(&lock)
         block()
         OSSpinLockUnlock(&lock)
+    }
+
+    override var description: String {
+        var description = String(format: "<%@:%p", arguments: [NSStringFromClass(self.dynamicType), self])
+        executeSafely {
+
+            var observersDescriptions = [String]()
+            for observer in observers.objectEnumerator() {
+                if let proxy = observer as? ControllerProxy {
+                    observersDescriptions.append(proxy.description)
+                }
+            }
+
+            description += " contexts:\(observersDescriptions)>"
+        }
+
+        return description
     }
 }
 
@@ -333,4 +399,35 @@ private struct ObservableStore<T : Observable> {
         case .Nonretained: return nonretainedObservable
         }
     }
+}
+
+private func optionDescription(option: NSKeyValueObservingOptions) -> String {
+    var string = ""
+
+    let options = [(option: NSKeyValueObservingOptions.New, "New"),
+        (option: NSKeyValueObservingOptions.Old, "Old"),
+        (option: NSKeyValueObservingOptions.Initial, "Initial"),
+        (option: NSKeyValueObservingOptions.Prior, "Prior")]
+
+    var varOption = option
+
+    while varOption.rawValue > 0 {
+        for (targetOption, desc) in options {
+            if varOption & targetOption == targetOption {
+                varOption = (~targetOption & varOption)
+                string += desc + "|"
+            }
+        }
+    }
+
+    if !string.isEmpty {
+        string.removeAtIndex(string.endIndex.predecessor())
+    }
+
+    return string;
+}
+
+private func kindDescription(kind: NSKeyValueChange) {
+    let kinds = [NSKeyValueChange.Insertion: "Insertion",
+        NSKeyValueChange.Removal: "Removal", NSKeyValueChange.Replacement : "Replacement", NSKeyValueChange.Setting : "Setting" ]
 }
