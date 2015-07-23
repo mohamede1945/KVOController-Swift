@@ -94,7 +94,7 @@ public extension NSObject {
     }
 }
 
-public struct Change<T> : Printable {
+public struct ChangeData<T> : Printable {
 
     public let kind: NSKeyValueChange  // NSKeyValueChangeKindKey
 
@@ -106,21 +106,26 @@ public struct Change<T> : Printable {
 
     public let isPrior: Bool           // NSKeyValueChangeNotificationIsPriorKey
 
-    init(change: [NSObject: AnyObject]) {
+    public let keyPath: String
+
+    init(change: [NSObject: AnyObject], keyPath: String) {
+
+        // the key path
+        self.keyPath = keyPath
 
         // mandatory
-        println("change: \(change)")
         kind = NSKeyValueChange(rawValue: change[NSKeyValueChangeKindKey]!.unsignedLongValue)!
-        if let prior = change[NSKeyValueChangeNotificationIsPriorKey] as? Bool {
-            isPrior  = prior
-        } else {
-            isPrior = false
-        }
 
         // optional
         newValue = change[NSKeyValueChangeNewKey] as? T
         oldValue = change[NSKeyValueChangeOldKey] as? T
         indexes  = change[NSKeyValueChangeIndexesKey] as? NSIndexSet
+
+        if let prior = change[NSKeyValueChangeNotificationIsPriorKey] as? Bool {
+            isPrior  = prior
+        } else {
+            isPrior = false
+        }
     }
 
     public var description: String {
@@ -150,12 +155,12 @@ public protocol ObserverWay {
     typealias ObservableType : Observable
     typealias PropertyType
 
-    func valueChanged(observable: ObservableType, change: Change<PropertyType>)
+    func valueChanged(observable: ObservableType, change: ChangeData<PropertyType>)
 }
 
 public struct ClosureObserverWay<ObservableType : Observable, PropertyType> : ObserverWay {
 
-    public typealias ObservingBlock = (observable: ObservableType, change: Change<PropertyType>) -> ()
+    public typealias ObservingBlock = (observable: ObservableType, change: ChangeData<PropertyType>) -> ()
 
     public let block: ObservingBlock
 
@@ -163,7 +168,7 @@ public struct ClosureObserverWay<ObservableType : Observable, PropertyType> : Ob
         self.block = block
     }
 
-    public func valueChanged(observable: ObservableType, change: Change<PropertyType>) {
+    public func valueChanged(observable: ObservableType, change: ChangeData<PropertyType>) {
         block(observable: observable, change: change)
     }
 }
@@ -240,7 +245,7 @@ public class Controller<ObserverWay : ObserverWay> : _KVOObserver, KVOObserver, 
 
     private func valueChanged(observable: Observable, change: [NSObject : AnyObject]) {
         if let observableObject = self.observable where observing {
-            let kvoChange = Change<ObserverWay.PropertyType>(change: change)
+            let kvoChange = ChangeData<ObserverWay.PropertyType>(change: change, keyPath: keyPath)
             observerWay.valueChanged(observableObject, change: kvoChange)
         }
     }

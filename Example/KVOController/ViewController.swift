@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
 
     private let clock = Clock()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,16 +22,13 @@ class ViewController: UIViewController {
         formatter.timeStyle = NSDateFormatterStyle.LongStyle
         formatter.dateStyle = NSDateFormatterStyle.NoStyle
 
-        observe(retainedObservable: clock, keyPath: "date", options: .New | .Initial) { [weak self] (observable: Clock, change: Change<NSDate>) -> () in
-            if let date = change.newValue {
-                self?.timeLabel.text = formatter.stringFromDate(date)
-            }
+        observe(retainedObservable: clock, keyPath: "date", options: .New | .Initial)
+            { [weak self] (observable: Clock, change: ChangeData<NSDate>) -> () in
+
+                if let date = change.newValue {
+                    self?.timeLabel.text = formatter.stringFromDate(date)
+                }
         }
     }
-
-    deinit {
-        NSLog("Dealocated")
-    }
-
 }
 
