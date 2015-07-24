@@ -12,6 +12,7 @@
 
 Still in development
 
+<!--
 #To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
@@ -24,10 +25,12 @@ Still in development
 #```ruby
 #pod "KVOController"
 #```
+ 
+--> 
 
 ## Author
 
-#Mohamed Afifi, mohamede1945@gmail.com
+Mohamed Afifi, mohamede1945@gmail.com
 
 ## License
 
