@@ -203,6 +203,8 @@ public class Controller<ObserverWay : ObserverWay> : _KVOObserver, KVOObserver, 
         context : UnsafeMutablePointer<Void> = nil,
         observerWay : ObserverWay) {
 
+            assert(!keyPath.isEmpty, "Keypath shouldn't be empty string")
+
             self.keyPath = keyPath
             self.options = options
             self.observerWay = observerWay
@@ -212,7 +214,7 @@ public class Controller<ObserverWay : ObserverWay> : _KVOObserver, KVOObserver, 
             SharedObserverController.shared.observe(observable, observer: self.proxy)
     }
 
-    convenience init(retainedObservable: ObserverWay.ObservableType,
+    public convenience init(retainedObservable: ObserverWay.ObservableType,
         keyPath : String,
         options : NSKeyValueObservingOptions,
         context : UnsafeMutablePointer<Void> = nil,
@@ -222,7 +224,7 @@ public class Controller<ObserverWay : ObserverWay> : _KVOObserver, KVOObserver, 
                 options : options, context : context, observerWay: observerWay)
     }
 
-    convenience init(nonretainedObservable: ObserverWay.ObservableType,
+    public convenience init(nonretainedObservable: ObserverWay.ObservableType,
         keyPath : String,
         options : NSKeyValueObservingOptions,
         context : UnsafeMutablePointer<Void> = nil,

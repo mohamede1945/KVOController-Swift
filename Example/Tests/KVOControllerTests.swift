@@ -28,20 +28,22 @@ class BaseObserver: NSObject {
     var indexes: NSIndexSet?
 }
 
-class RadiusObserver : BaseObserver {
+class BaseCircleObserver : BaseObserver {
     let circle: Circle
     let options: NSKeyValueObservingOptions
-
-    var newValue: Int?
-    var oldValue: Int?
 
     init(circle: Circle, options: NSKeyValueObservingOptions) {
         self.circle = circle
         self.options = options;
     }
+}
+class RadiusObserver : BaseCircleObserver {
 
-    func startObserving() {
-        observe(retainedObservable: circle, keyPath: Circle.Radius, options: options) { [weak self] (observable: Circle, change: ChangeData<Int>) -> () in
+    var newValue: Int?
+    var oldValue: Int?
+
+    func startObserving() -> Controller<ClosureObserverWay<Circle, Int>> {
+        let controller = observe(retainedObservable: circle, keyPath: Circle.Radius, options: options) { [weak self] (observable: Circle, change: ChangeData<Int>) -> () in
 
             if let strong = self {
                 strong.calls++
@@ -53,10 +55,30 @@ class RadiusObserver : BaseObserver {
 
                 strong.newValue = change.newValue
                 strong.oldValue = change.oldValue
+            } else {
+                XCTFail("Observe called for a deallocated object")
             }
+        }
+        return controller
+    }
+}
 
+class EmptyRadusObserver : BaseCircleObserver {
+
+    func startObserving() {
+        observe(retainedObservable: circle, keyPath: "", options: options) { [weak self] (observable: Circle, change: ChangeData<Int>) -> () in
+
+            if let strong = self {
+                strong.calls++
+                strong.observable = observable
+
+                strong.isPrior = strong.isPrior || change.isPrior
+                strong.keyPath = change.keyPath
+                strong.indexes = change.indexes
+            }
         }
     }
+
 }
 
 class KVOControllerTests: XCTestCase {
@@ -209,5 +231,105 @@ class KVOControllerTests: XCTestCase {
         NLAssertEqualOptional(radiusObserver.oldValue, 0, "Invalid old value")
         NLAssertEqualOptional(radiusObserver.newValue, 2, "Invalid new value")
     }
+
+    func testUnobserve() {
+
+        // start observing
+        let circle = Circle()
+        let options = NSKeyValueObservingOptions.New
+        let radiusObserver = RadiusObserver(circle: circle, options: options)
+        radiusObserver.startObserving()
+
+        // change value
+        circle.radius = 2
+
+        // assert
+        XCTAssertEqual(1, radiusObserver.calls, "Invalid number of calls")
+
+        radiusObserver.unobserve(circle, keyPath: Circle.Radius)
+
+        // change value
+        circle.radius = 5
+
+        // assert
+        XCTAssertEqual(1, radiusObserver.calls, "Invalid number of calls")
+
+    }
+
+    func testUnobserveAll() {
+
+        // start observing
+        let circle = Circle()
+        let options = NSKeyValueObservingOptions.New
+        let radiusObserver = RadiusObserver(circle: circle, options: options)
+        radiusObserver.startObserving()
+
+        // change value
+        circle.radius = 2
+
+        // assert
+        XCTAssertEqual(1, radiusObserver.calls, "Invalid number of calls")
+
+        radiusObserver.unobserveAll()
+
+        // change value
+        circle.radius = 5
+
+        // assert
+        XCTAssertEqual(1, radiusObserver.calls, "Invalid number of calls")
+    }
+
+    func testDeallocatedObserver() {
+
+        // start observing
+        let circle = Circle()
+
+        autoreleasepool {
+            let options = NSKeyValueObservingOptions.New
+            var radiusObserver: RadiusObserver? = RadiusObserver(circle: circle, options: options)
+            radiusObserver?.startObserving()
+
+            // change value
+            circle.radius = 5
+
+            radiusObserver = nil // deallocate
+        }
+
+        // change again, should pass as RadiusObserver will fail if block is called when deallocated
+        circle.radius = 1
+    }
+
+    func testDeallocatedController() {
+
+        // start observing
+        let circle = Circle()
+
+        var calls = 0
+
+        let closure = ClosureObserverWay() { (observable: Circle, change: ChangeData<Int>) -> () in
+            calls++
+        }
+
+        autoreleasepool {
+            let options = NSKeyValueObservingOptions.New
+
+            var controller: Controller<ClosureObserverWay<Circle, Int>>? = Controller(retainedObservable: circle, keyPath: Circle.Radius, options: options, observerWay: closure)
+
+            // change value
+            circle.radius = 5
+
+            controller = nil // deallocated
+
+            // assert
+            XCTAssertEqual(1, calls, "Invalid number of calls")
+        }
+
+        // change again, should pass as RadiusObserver will fail if block is called when deallocated
+        circle.radius = 1
+
+        // assert, calls shouldn't change
+        XCTAssertEqual(1, calls, "Invalid number of calls")
+    }
+
 
 }
