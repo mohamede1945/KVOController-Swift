@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="1JE-tO-h2c">
             <objects>
-                <viewController id="fy9-jM-c8P" customClass="ViewController" customModule="KVOController_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fy9-jM-c8P" customClass="ViewController" customModule="KVOController_Swift_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7U9-MF-VqY"/>
                         <viewControllerLayoutGuide type="bottom" id="uE4-Ho-JSt"/>
@@ -18,28 +18,40 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9N-wJ-E42">
-                                <rect key="frame" x="36" y="40" width="101" height="21"/>
+                                <rect key="frame" x="36" y="40" width="100.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oly-nn-hNK">
-                                <rect key="frame" x="141" y="40" width="101" height="21"/>
+                                <rect key="frame" x="141" y="40" width="100.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXH-QG-geY">
+                                <rect key="frame" x="283.5" y="285" width="33" height="30"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startStopButtonTapped:" destination="fy9-jM-c8P" eventType="touchUpInside" id="eXg-tV-7jq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="f9N-wJ-E42" firstAttribute="leading" secondItem="LMx-xy-bvd" secondAttribute="leadingMargin" constant="20" id="1aC-73-2bb"/>
+                            <constraint firstAttribute="centerX" secondItem="LXH-QG-geY" secondAttribute="centerX" id="Lst-2b-G8r"/>
                             <constraint firstItem="f9N-wJ-E42" firstAttribute="baseline" secondItem="oly-nn-hNK" secondAttribute="baseline" id="VdS-oL-gQx"/>
+                            <constraint firstAttribute="centerY" secondItem="LXH-QG-geY" secondAttribute="centerY" id="bjM-f2-nRV"/>
                             <constraint firstItem="oly-nn-hNK" firstAttribute="leading" secondItem="f9N-wJ-E42" secondAttribute="trailing" constant="5" id="rkb-gU-5Na"/>
                             <constraint firstItem="f9N-wJ-E42" firstAttribute="top" secondItem="7U9-MF-VqY" secondAttribute="bottom" constant="20" id="zMh-Ls-Bpa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5ge-hE-HYz"/>
                     <connections>
+                        <outlet property="button" destination="LXH-QG-geY" id="fdT-ec-Tsn"/>
                         <outlet property="timeLabel" destination="oly-nn-hNK" id="iXh-hf-ZU7"/>
                     </connections>
                 </viewController>

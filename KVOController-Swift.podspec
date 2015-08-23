@@ -12,8 +12,8 @@ Pod::Spec.new do |s|
   s.summary          = "Generic, simple key-value observing for Swift"
   s.description      = <<-DESC
 
-Have you ever wondered if you can implement a generic key-value observing for Swift. It makes your life easy and safes you a lot of casting.
-This project is inspired by facebook/KVOController. So, it doesn't only provide a neat UI for KVO', but also makes use of Swift generics feature.
+Have you ever wondered if you can implement a generic key-value observing for Swift. It makes your life easy and saves you a lot of casting.
+This project is inspired by facebook/KVOController. So, it doesn't only provide a neat API for KVO', but also makes use of Swift generics feature.
 
                        DESC
   s.homepage         = "https://github.com/mohamede1945/KVOController-Swift"

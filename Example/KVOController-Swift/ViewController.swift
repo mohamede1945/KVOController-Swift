@@ -18,11 +18,16 @@ Represents the view controller class.
 */
 class ViewController: UIViewController {
 
+    /// Represents the button property.
+    @IBOutlet weak var button: UIButton!
+
     /// Represents the time label property.
     @IBOutlet weak var timeLabel: UILabel!
 
     /// Represents the clock property.
     private let clock = Clock()
+
+    private var observing = false
 
     /**
     View did load.
@@ -30,6 +35,26 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+
+        startObserve()
+                observing = true
+    }
+
+    @IBAction func startStopButtonTapped(sender: AnyObject) {
+        if observing {
+            unobserve(clock, keyPath: "date")
+            observing = false
+            button.setTitle("Start", forState: .Normal)
+
+        } else {
+            startObserve()
+            observing = true
+            button.setTitle("Stop", forState: .Normal)
+        }
+    }
+
+    func startObserve() {
         let formatter = NSDateFormatter()
         formatter.timeStyle = NSDateFormatterStyle.LongStyle
         formatter.dateStyle = NSDateFormatterStyle.NoStyle
@@ -42,5 +67,6 @@ class ViewController: UIViewController {
                 }
         }
     }
+    
 }
 
