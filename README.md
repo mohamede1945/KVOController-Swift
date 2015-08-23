@@ -5,8 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/KVOController-Swift.svg?style=flat)](http://cocoapods.org/pods/KVOController-Swift)
 [![Platform](https://img.shields.io/cocoapods/p/KVOController-Swift.svg?style=flat)](http://cocoapods.org/pods/KVOController-Swift)
 
-Have you ever wondered if you can implement a generic key-value observing for Swift. It makes your life easy and safes you a lot of casting.
-This project is inspired by facebook/KVOController. So, it doesn't only provide a neat UI for KVO', but also makes use of Swift generics feature.
+Have you ever wondered if you can implement a generic key-value observing for Swift. It makes your life easy and saves you a lot of casting.
+This project is inspired by facebook/KVOController. So, it doesn't only provide a neat API for KVO', but also makes use of Swift generics feature.
 
 ## Requirements
 
@@ -14,6 +14,21 @@ This project is inspired by facebook/KVOController. So, it doesn't only provide 
 - Xcode 6.3
 
 ## Usage
+
+**Simple use**
+```Swift
+observe(retainedObservable: clock, keyPath: "date", options: .New | .Initial)
+    { [weak self] (observable: Clock, change: ChangeData<NSDate>) -> () in
+
+        if let date = change.newValue {
+            self?.timeLabel.text = formatter.stringFromDate(date)
+        }
+}
+```
+You can make use of automatic unobserving behavior or if you really want to unobserve, simply call
+```Swift
+  unobserve(clock, keyPath: "date")
+```
 
 
 ## Installation
