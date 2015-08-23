@@ -15,6 +15,21 @@ This project is inspired by facebook/KVOController. So, it doesn't only provide 
 
 ## Usage
 
+**Simple use**
+```Swift
+observe(retainedObservable: clock, keyPath: "date", options: .New | .Initial)
+    { [weak self] (observable: Clock, change: ChangeData<NSDate>) -> () in
+
+        if let date = change.newValue {
+            self?.timeLabel.text = formatter.stringFromDate(date)
+        }
+}
+```
+You can make use of automatic unobserving behavior or if you really want to unobserve, simply call
+```Swift
+  unobserve(clock, keyPath: "date")
+```
+
 
 ## Installation
 
