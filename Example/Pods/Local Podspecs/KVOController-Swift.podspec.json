@@ -1,0 +1,25 @@
+{
+  "name": "KVOController-Swift",
+  "version": "0.1.0",
+  "summary": "A short description of KVOController-Swift.",
+  "description": "",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/KVOController-Swift",
+  "license": "MIT",
+  "authors": {
+    "Mohamed Afifi": "mohamede1945@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/KVOController-Swift.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "KVOController-Swift": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}

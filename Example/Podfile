@@ -1,12 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'KVOController_Example', :exclusive => true do
-  pod "KVOController", :path => "../"
+target 'KVOController-Swift_Example', :exclusive => true do
+  pod "KVOController-Swift", :path => "../"
 end
 
-target 'KVOController_Tests', :exclusive => true do
-  pod "KVOController", :path => "../"
+target 'KVOController-Swift_Tests', :exclusive => true do
+  pod "KVOController-Swift", :path => "../"
 
   
 end

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QAI-Ud-AoT">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="1JE-tO-h2c">
+            <objects>
+                <viewController id="fy9-jM-c8P" customClass="ViewController" customModule="KVOController_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7U9-MF-VqY"/>
+                        <viewControllerLayoutGuide type="bottom" id="uE4-Ho-JSt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LMx-xy-bvd">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9N-wJ-E42">
+                                <rect key="frame" x="36" y="40" width="101" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oly-nn-hNK">
+                                <rect key="frame" x="141" y="40" width="101" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f9N-wJ-E42" firstAttribute="leading" secondItem="LMx-xy-bvd" secondAttribute="leadingMargin" constant="20" id="1aC-73-2bb"/>
+                            <constraint firstItem="f9N-wJ-E42" firstAttribute="baseline" secondItem="oly-nn-hNK" secondAttribute="baseline" id="VdS-oL-gQx"/>
+                            <constraint firstItem="oly-nn-hNK" firstAttribute="leading" secondItem="f9N-wJ-E42" secondAttribute="trailing" constant="5" id="rkb-gU-5Na"/>
+                            <constraint firstItem="f9N-wJ-E42" firstAttribute="top" secondItem="7U9-MF-VqY" secondAttribute="bottom" constant="20" id="zMh-Ls-Bpa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="5ge-hE-HYz"/>
+                    <connections>
+                        <outlet property="timeLabel" destination="oly-nn-hNK" id="iXh-hf-ZU7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AhY-5E-hlm" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1519" y="429"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="C5J-zb-SLt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="QAI-Ud-AoT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="6Qc-3f-Uhe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fy9-jM-c8P" kind="relationship" relationship="rootViewController" id="qwH-Ao-vLF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EVY-dS-OQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="81" y="549"/>
+        </scene>
+    </scenes>
+</document>

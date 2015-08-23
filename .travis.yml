@@ -3,7 +3,6 @@
 # * https://github.com/supermarin/xcpretty#usage
 
 language: objective-c
-osx_image: beta-xcode6.3
 # cache: cocoapods
 # podfile: Example/Podfile
 # before_install:
@@ -12,5 +11,5 @@ osx_image: beta-xcode6.3
 install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 script:
-- set -o pipefail && xcodebuild test -workspace Example/KVOController.xcworkspace -scheme KVOController-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- set -o pipefail && xcodebuild test -workspace Example/KVOController-Swift.xcworkspace -scheme KVOController-Swift-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
 - pod lib lint --quick

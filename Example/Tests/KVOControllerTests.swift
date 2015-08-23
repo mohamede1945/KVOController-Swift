@@ -8,7 +8,7 @@
 
 import UIKit
 import XCTest
-import KVOController
+import KVOController_Swift
 
 /**
 Represents the circle class.

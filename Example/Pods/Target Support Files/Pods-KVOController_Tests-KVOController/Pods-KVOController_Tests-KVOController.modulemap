@@ -1,6 +1,0 @@
-framework module KVOController {
-  umbrella header "Pods-KVOController_Tests-KVOController-umbrella.h"
-
-  export *
-  module * { export * }
-}
