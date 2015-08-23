@@ -10,24 +10,59 @@ import UIKit
 import XCTest
 import KVOController
 
+/**
+Represents the circle class.
+
+@author mohamede1945
+
+@version 1.0
+*/
 class Circle : NSObject {
+    /// Represents the radius property.
     dynamic var radius = 0
 
+    /// Represents the radius property.
     static let Radius = "radius"
 }
 
+/**
+Represents the point class.
+
+@author mohamede1945
+
+@version 1.0
+*/
 class Point: NSObject {
 }
 
+/**
+Represents the base observer class.
+
+@author mohamede1945
+
+@version 1.0
+*/
 class BaseObserver: NSObject {
 
+    /// Represents the calls property.
     var calls = 0
+    /// Represents the is prior property.
     var isPrior: Bool = false
+    /// Represents the key path property.
     var keyPath: String = ""
+    /// Represents the observable property.
     var observable: NSObject = NSObject()
+    /// Represents the indexes property.
     var indexes: NSIndexSet?
 }
 
+/**
+Represents the base circle observer class.
+
+@author mohamede1945
+
+@version 1.0
+*/
 class BaseCircleObserver : BaseObserver {
     let circle: Circle
     let options: NSKeyValueObservingOptions
@@ -37,6 +72,14 @@ class BaseCircleObserver : BaseObserver {
         self.options = options;
     }
 }
+
+/**
+Represents the radius observer class.
+
+@author mohamede1945
+
+@version 1.0
+*/
 class RadiusObserver : BaseCircleObserver {
 
     var newValue: Int?
@@ -63,6 +106,13 @@ class RadiusObserver : BaseCircleObserver {
     }
 }
 
+/**
+Represents the empty radus observer class.
+
+@author mohamede1945
+
+@version 1.0
+*/
 class EmptyRadusObserver : BaseCircleObserver {
 
     func startObserving() {
@@ -81,15 +131,18 @@ class EmptyRadusObserver : BaseCircleObserver {
 
 }
 
-class KVOControllerTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-    }
+/**
+Represents the kvo controller tests class.
 
+@author mohamede1945
+
+@version 1.0
+*/
+class KVOControllerTests: XCTestCase {
+
+    /**
+    Test observe radius.
+    */
     func testObserveRadius() {
 
         // start observing
@@ -114,6 +167,9 @@ class KVOControllerTests: XCTestCase {
         NLAssertEqualOptional(radiusObserver.newValue, 2, "Invalid new value")
     }
 
+    /**
+    Test observe radius old value.
+    */
     func testObserveRadiusOldValue() {
 
         // start observing
@@ -138,7 +194,9 @@ class KVOControllerTests: XCTestCase {
         NLAssertEqualOptional(radiusObserver.newValue, 2, "Invalid new value")
     }
 
-
+    /**
+    Test observe radius initial.
+    */
     func testObserveRadiusInitial() {
 
         // start observing
@@ -160,6 +218,9 @@ class KVOControllerTests: XCTestCase {
         NLAssertEqualOptional(radiusObserver.newValue, 0, "Invalid new value")
     }
 
+    /**
+    Test observe radius piror.
+    */
     func testObserveRadiusPiror() {
 
         // start observing
@@ -184,6 +245,9 @@ class KVOControllerTests: XCTestCase {
         XCTAssertNil(radiusObserver.newValue, "Invalid new value")
     }
 
+    /**
+    Test observe radius none options.
+    */
     func testObserveRadiusNoneOptions() {
 
         // start observing
@@ -208,6 +272,9 @@ class KVOControllerTests: XCTestCase {
         XCTAssertNil(radiusObserver.newValue, "Invalid new value")
     }
 
+    /**
+    Test observe radius all options.
+    */
     func testObserveRadiusAllOptions() {
 
         // start observing
@@ -232,6 +299,9 @@ class KVOControllerTests: XCTestCase {
         NLAssertEqualOptional(radiusObserver.newValue, 2, "Invalid new value")
     }
 
+    /**
+    Test unobserve.
+    */
     func testUnobserve() {
 
         // start observing
@@ -256,6 +326,9 @@ class KVOControllerTests: XCTestCase {
 
     }
 
+    /**
+    Test unobserve all.
+    */
     func testUnobserveAll() {
 
         // start observing
@@ -279,6 +352,9 @@ class KVOControllerTests: XCTestCase {
         XCTAssertEqual(1, radiusObserver.calls, "Invalid number of calls")
     }
 
+    /**
+    Test deallocated observer.
+    */
     func testDeallocatedObserver() {
 
         // start observing
@@ -299,6 +375,9 @@ class KVOControllerTests: XCTestCase {
         circle.radius = 1
     }
 
+    /**
+    Test deallocated controller.
+    */
     func testDeallocatedController() {
 
         // start observing
