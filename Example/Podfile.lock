@@ -1,5 +1,5 @@
 PODS:
-  - KVOController-Swift (0.1.0)
+  - KVOController-Swift (1.0.0)
 
 DEPENDENCIES:
   - KVOController-Swift (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  KVOController-Swift: 05dc96b924caec9aba75c6774d93cc9062d386b9
+  KVOController-Swift: ecad531c1201da3d0aee9ad8e01fa13dea9960f0
 
 COCOAPODS: 0.37.2
