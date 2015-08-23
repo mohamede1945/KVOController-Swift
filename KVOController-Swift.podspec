@@ -10,17 +10,12 @@ Pod::Spec.new do |s|
   s.name             = "KVOController-Swift"
   s.version          = "1.0.0"
   s.summary          = "Generic, simple key-value observing for Swift"
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
 
 Have you ever wondered if you can implement a generic key-value observing for Swift. It makes your life easy and safes you a lot of casting.
 This project is inspired by facebook/KVOController. So, it doesn't only provide a neat UI for KVO', but also makes use of Swift generics feature.
 
+                       DESC
   s.homepage         = "https://github.com/mohamede1945/KVOController-Swift"
   s.license          = 'MIT'
   s.author           = { "Mohamed Afifi" => "mohamede1945@gmail.com" }
