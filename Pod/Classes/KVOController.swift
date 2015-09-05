@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Varaw. All rights reserved.
 //
 
+import Foundation
+
 /// Represents the types of objects that can be observable.
 public typealias Observable = NSObject
 
