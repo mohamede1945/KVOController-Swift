@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         formatter.timeStyle = NSDateFormatterStyle.LongStyle
         formatter.dateStyle = NSDateFormatterStyle.NoStyle
 
-        observe(retainedObservable: clock, keyPath: "date", options: .New | .Initial)
+        observe(retainedObservable: clock, keyPath: "date", options: [.New, .Initial])
             { [weak self] (observable: Clock, change: ChangeData<NSDate>) -> () in
 
                 if let date = change.newValue {

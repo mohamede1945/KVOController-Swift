@@ -26,7 +26,7 @@ class Clock : NSObject {
     /**
     Initialize new instance.
 
-    :returns: The new created instance.
+    - returns: The new created instance.
     */
     override init() {
         super.init()
@@ -56,12 +56,12 @@ class Timer {
     /**
     Initialize new instance with interval, repeated, queue and handler.
 
-    :param: interval The interval parameter.
-    :param: repeated The repeated parameter.
-    :param: queue    The queue parameter.
-    :param: handler  The handler parameter.
+    - parameter interval: The interval parameter.
+    - parameter repeated: The repeated parameter.
+    - parameter queue:    The queue parameter.
+    - parameter handler:  The handler parameter.
 
-    :returns: The new created instance.
+    - returns: The new created instance.
     */
     init(interval: NSTimeInterval, repeated: Bool, queue: dispatch_queue_t = dispatch_get_main_queue(), handler: dispatch_block_t) {
         self.repeated = repeated

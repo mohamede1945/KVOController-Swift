@@ -174,7 +174,7 @@ class KVOControllerTests: XCTestCase {
 
         // start observing
         let circle = Circle()
-        let options = NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Old
+        let options: NSKeyValueObservingOptions = [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old]
         let radiusObserver = RadiusObserver(circle: circle, options: options)
         radiusObserver.startObserving()
 
@@ -201,7 +201,7 @@ class KVOControllerTests: XCTestCase {
 
         // start observing
         let circle = Circle()
-        let options = NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Initial
+        let options: NSKeyValueObservingOptions = [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Initial]
         let radiusObserver = RadiusObserver(circle: circle, options: options)
         radiusObserver.startObserving()
 
@@ -252,7 +252,7 @@ class KVOControllerTests: XCTestCase {
 
         // start observing
         let circle = Circle()
-        let options = NSKeyValueObservingOptions.allZeros
+        let options = NSKeyValueObservingOptions()
         let radiusObserver = RadiusObserver(circle: circle, options: options)
         radiusObserver.startObserving()
 
@@ -279,7 +279,7 @@ class KVOControllerTests: XCTestCase {
 
         // start observing
         let circle = Circle()
-        let options = NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Old | NSKeyValueObservingOptions.Initial | NSKeyValueObservingOptions.Prior
+        let options: NSKeyValueObservingOptions = [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old, NSKeyValueObservingOptions.Initial, NSKeyValueObservingOptions.Prior]
         let radiusObserver = RadiusObserver(circle: circle, options: options)
         radiusObserver.startObserving()
 
@@ -393,6 +393,8 @@ class KVOControllerTests: XCTestCase {
             let options = NSKeyValueObservingOptions.New
 
             var controller: Controller<ClosureObserverWay<Circle, Int>>? = Controller(retainedObservable: circle, keyPath: Circle.Radius, options: options, observerWay: closure)
+
+            XCTAssertEqual(Circle.Radius, controller?.keyPath)
 
             // change value
             circle.radius = 5
