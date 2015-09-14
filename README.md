@@ -11,7 +11,7 @@ This project is inspired by facebook/KVOController. So, it doesn't only provide 
 ## Requirements
 
 - iOS 7.0+ / Mac OS X 10.9+
-- Xcode 6.3
+- Xcode 7
 
 ## Usage
 
