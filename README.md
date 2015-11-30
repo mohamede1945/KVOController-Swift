@@ -25,6 +25,9 @@ observe(retainedObservable: clock, keyPath: "date", options: .New | .Initial)
         }
 }
 ```
+**Note, you have to give the `change` a generic type of the property. In our case property is `NSDate`, so change is of type `ChangeData<NSDate>`**
+
+
 You can make use of automatic unobserving behavior or if you really want to unobserve, simply call
 ```Swift
   unobserve(clock, keyPath: "date")
