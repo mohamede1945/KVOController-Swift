@@ -1,6 +1,5 @@
 # KVOController-Swift
 
-[![CI Status](http://img.shields.io/travis/mohamede1945/KVOController-Swift.svg?style=flat)](https://travis-ci.org/mohamede1945/KVOController-Swift)
 [![Version](https://img.shields.io/cocoapods/v/KVOController-Swift.svg?style=flat)](http://cocoapods.org/pods/KVOController-Swift)
 [![License](https://img.shields.io/cocoapods/l/KVOController-Swift.svg?style=flat)](http://cocoapods.org/pods/KVOController-Swift)
 [![Platform](https://img.shields.io/cocoapods/p/KVOController-Swift.svg?style=flat)](http://cocoapods.org/pods/KVOController-Swift)
