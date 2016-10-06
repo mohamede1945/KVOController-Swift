@@ -22,17 +22,14 @@ This project is inspired by facebook/KVOController. So, it doesn't only provide 
   s.license          = 'MIT'
   s.author           = { "Mohamed Afifi" => "mohamede1945@gmail.com" }
   s.source           = { :git => "https://github.com/mohamede1945/KVOController-Swift.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/mohamede1945'
+  s.social_media_url = 'https://twitter.com/mohamede1945'
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
+  s.source_files = 'Sources/**/*'
   s.resource_bundles = {
     'KVOController-Swift' => ['Pod/Assets/*.png']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
