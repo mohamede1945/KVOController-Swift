@@ -1,5 +1,0 @@
-#import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_KVOController_Swift_Example_KVOController_Swift : NSObject
-@end
-@implementation PodsDummy_Pods_KVOController_Swift_Example_KVOController_Swift
-@end
