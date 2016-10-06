@@ -4,13 +4,16 @@
 [![License](https://img.shields.io/cocoapods/l/KVOController-Swift.svg?style=flat)](http://cocoapods.org/pods/KVOController-Swift)
 [![Platform](https://img.shields.io/cocoapods/p/KVOController-Swift.svg?style=flat)](http://cocoapods.org/pods/KVOController-Swift)
 
+**Supports Swift 3.0**
+
 Have you ever wondered if you can implement a generic key-value observing for Swift. It makes your life easy and saves you a lot of casting.
 This project is inspired by facebook/KVOController. So, it doesn't only provide a neat API for KVO', but also makes use of Swift generics feature.
 
 ## Requirements
 
 - iOS 7.0+ / Mac OS X 10.9+
-- Xcode 7
+- Xcode 8
+- Swift 3.0
 
 ## Usage
 

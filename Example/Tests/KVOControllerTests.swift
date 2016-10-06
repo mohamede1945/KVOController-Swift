@@ -53,7 +53,7 @@ class BaseObserver: NSObject {
     /// Represents the observable property.
     var observable: NSObject = NSObject()
     /// Represents the indexes property.
-    var indexes: NSIndexSet?
+    var indexes: IndexSet?
 }
 
 /**
@@ -85,11 +85,12 @@ class RadiusObserver : BaseCircleObserver {
     var newValue: Int?
     var oldValue: Int?
 
+    @discardableResult
     func startObserving() -> Controller<ClosureObserverWay<Circle, Int>> {
         let controller = observe(retainedObservable: circle, keyPath: Circle.Radius, options: options) { [weak self] (observable: Circle, change: ChangeData<Int>) -> () in
 
             if let strong = self {
-                strong.calls++
+                strong.calls += 1
                 strong.observable = observable
 
                 strong.isPrior = strong.isPrior || change.isPrior
@@ -119,7 +120,7 @@ class EmptyRadusObserver : BaseCircleObserver {
         observe(retainedObservable: circle, keyPath: "", options: options) { [weak self] (observable: Circle, change: ChangeData<Int>) -> () in
 
             if let strong = self {
-                strong.calls++
+                strong.calls += 1
                 strong.observable = observable
 
                 strong.isPrior = strong.isPrior || change.isPrior
@@ -147,7 +148,7 @@ class KVOControllerTests: XCTestCase {
 
         // start observing
         let circle = Circle()
-        let options = NSKeyValueObservingOptions.New
+        let options = NSKeyValueObservingOptions.new
         let radiusObserver = RadiusObserver(circle: circle, options: options)
         radiusObserver.startObserving()
 
@@ -174,7 +175,7 @@ class KVOControllerTests: XCTestCase {
 
         // start observing
         let circle = Circle()
-        let options: NSKeyValueObservingOptions = [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old]
+        let options: NSKeyValueObservingOptions = [NSKeyValueObservingOptions.new, NSKeyValueObservingOptions.old]
         let radiusObserver = RadiusObserver(circle: circle, options: options)
         radiusObserver.startObserving()
 
@@ -201,7 +202,7 @@ class KVOControllerTests: XCTestCase {
 
         // start observing
         let circle = Circle()
-        let options: NSKeyValueObservingOptions = [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Initial]
+        let options: NSKeyValueObservingOptions = [NSKeyValueObservingOptions.new, NSKeyValueObservingOptions.initial]
         let radiusObserver = RadiusObserver(circle: circle, options: options)
         radiusObserver.startObserving()
 
@@ -225,7 +226,7 @@ class KVOControllerTests: XCTestCase {
 
         // start observing
         let circle = Circle()
-        let options = NSKeyValueObservingOptions.Prior
+        let options = NSKeyValueObservingOptions.prior
         let radiusObserver = RadiusObserver(circle: circle, options: options)
         radiusObserver.startObserving()
 
@@ -279,7 +280,7 @@ class KVOControllerTests: XCTestCase {
 
         // start observing
         let circle = Circle()
-        let options: NSKeyValueObservingOptions = [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old, NSKeyValueObservingOptions.Initial, NSKeyValueObservingOptions.Prior]
+        let options: NSKeyValueObservingOptions = [NSKeyValueObservingOptions.new, NSKeyValueObservingOptions.old, NSKeyValueObservingOptions.initial, NSKeyValueObservingOptions.prior]
         let radiusObserver = RadiusObserver(circle: circle, options: options)
         radiusObserver.startObserving()
 
@@ -306,7 +307,7 @@ class KVOControllerTests: XCTestCase {
 
         // start observing
         let circle = Circle()
-        let options = NSKeyValueObservingOptions.New
+        let options = NSKeyValueObservingOptions.new
         let radiusObserver = RadiusObserver(circle: circle, options: options)
         radiusObserver.startObserving()
 
@@ -333,7 +334,7 @@ class KVOControllerTests: XCTestCase {
 
         // start observing
         let circle = Circle()
-        let options = NSKeyValueObservingOptions.New
+        let options = NSKeyValueObservingOptions.new
         let radiusObserver = RadiusObserver(circle: circle, options: options)
         radiusObserver.startObserving()
 
@@ -361,7 +362,7 @@ class KVOControllerTests: XCTestCase {
         let circle = Circle()
 
         autoreleasepool {
-            let options = NSKeyValueObservingOptions.New
+            let options = NSKeyValueObservingOptions.new
             var radiusObserver: RadiusObserver? = RadiusObserver(circle: circle, options: options)
             radiusObserver?.startObserving()
 
@@ -386,11 +387,11 @@ class KVOControllerTests: XCTestCase {
         var calls = 0
 
         let closure = ClosureObserverWay() { (observable: Circle, change: ChangeData<Int>) -> () in
-            calls++
+            calls += 1
         }
 
         autoreleasepool {
-            let options = NSKeyValueObservingOptions.New
+            let options = NSKeyValueObservingOptions.new
 
             var controller: Controller<ClosureObserverWay<Circle, Int>>? = Controller(retainedObservable: circle, keyPath: Circle.Radius, options: options, observerWay: closure)
 

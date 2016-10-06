@@ -8,9 +8,11 @@
 
 Pod::Spec.new do |s|
   s.name             = "KVOController-Swift"
-  s.version          = "1.2.0"
+  s.version          = "2.0.0"
   s.summary          = "Generic, simple key-value observing for Swift"
   s.description      = <<-DESC
+
+**Supports Swift 3.0**
 
 Have you ever wondered if you can implement a generic key-value observing for Swift. It makes your life easy and saves you a lot of casting.
 This project is inspired by facebook/KVOController. So, it doesn't only provide a neat API for KVO', but also makes use of Swift generics feature.

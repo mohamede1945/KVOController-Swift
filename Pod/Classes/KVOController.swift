@@ -29,11 +29,12 @@ public extension NSObject {
 
     - returns: The observer controller, you can use it to unobserve.
     */
+    @discardableResult
     public func observe<Observable : NSObject, PropertyType>(
-        retainedObservable retainedObservable: Observable,
+        retainedObservable: Observable,
         keyPath: String,
         options: NSKeyValueObservingOptions,
-        block: ClosureObserverWay<Observable, PropertyType>.ObservingBlock) -> Controller<ClosureObserverWay<Observable, PropertyType>> {
+        block: @escaping ClosureObserverWay<Observable, PropertyType>.ObservingBlock) -> Controller<ClosureObserverWay<Observable, PropertyType>> {
 
             let closure = ClosureObserverWay(block: block)
             let controller = Controller(retainedObservable: retainedObservable, keyPath: keyPath, options: options, observerWay: closure)
@@ -51,11 +52,12 @@ public extension NSObject {
 
     - returns: The observer controller, you can use it to unobserve.
     */
+    @discardableResult
     public func observe<ObservableType : Observable, PropertyType>(
-        nonretainedObservable nonretainedObservable: ObservableType,
+        nonretainedObservable: ObservableType,
         keyPath: String,
         options: NSKeyValueObservingOptions,
-        block: ClosureObserverWay<ObservableType, PropertyType>.ObservingBlock) -> Controller<ClosureObserverWay<ObservableType, PropertyType>> {
+        block: @escaping ClosureObserverWay<ObservableType, PropertyType>.ObservingBlock) -> Controller<ClosureObserverWay<ObservableType, PropertyType>> {
 
             let closure = ClosureObserverWay(block: block)
             let controller = Controller(nonretainedObservable: nonretainedObservable, keyPath: keyPath, options: options, observerWay: closure)
@@ -69,16 +71,16 @@ public extension NSObject {
     - parameter observable: The observable parameter.
     - parameter keyPath:    The key path parameter.
     */
-    public func unobserve(observable: Observable, keyPath: String) {
+    public func unobserve(_ observable: Observable, keyPath: String) {
         var observers = listOfObservers()
 
-        for (index, observer) in observers.enumerate() {
+        for (index, observer) in observers.enumerated() {
             if observer.isObserving(observable, keyPath: keyPath) {
                 // stop observing
                 observer.unobserve()
 
                 // remove observer
-                observers.removeAtIndex(index)
+                observers.remove(at: index)
                 break
             }
         }
@@ -101,7 +103,7 @@ public extension NSObject {
     /**
     Remove object association.
     */
-    private func removeObjectAssociation() {
+    fileprivate func removeObjectAssociation() {
         objc_setAssociatedObject(self, &KVOControllerObjectAssociationKey, nil, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 
@@ -110,11 +112,11 @@ public extension NSObject {
 
     - returns: The list of observers.
     */
-    private func listOfObservers() -> [KVOObserver] {
-        let associatedObject : AnyObject? =  objc_getAssociatedObject(self, &KVOControllerObjectAssociationKey)
+    fileprivate func listOfObservers() -> [KVOObserver] {
+        let associatedObject : AnyObject? =  objc_getAssociatedObject(self, &KVOControllerObjectAssociationKey) as AnyObject?
         var observers: [KVOObserver]
         if let associatedObject = associatedObject as? ObjectWrapper,
-            observersArray = associatedObject.any as? [KVOObserver] {
+            let observersArray = associatedObject.any as? [KVOObserver] {
             observers = observersArray
         } else {
             observers = [KVOObserver]()
@@ -127,7 +129,7 @@ public extension NSObject {
 
     - parameter observer: The observer parameter.
     */
-    private func addObserver(observer: KVOObserver) {
+    fileprivate func addObserver(_ observer: KVOObserver) {
         var observers = listOfObservers()
         observers.append(observer)
 
@@ -142,7 +144,7 @@ public extension NSObject {
 
     @version 1.0
     */
-    private class ObjectWrapper {
+    fileprivate class ObjectWrapper {
         /// Represents the any property.
         var any: Any
         /**
@@ -177,7 +179,7 @@ public struct ChangeData<T> : CustomStringConvertible {
     public let oldValue: T?            // NSKeyValueChangeOldKey
 
     /// Represents the indexes property.
-    public let indexes: NSIndexSet?    // NSKeyValueChangeIndexesKey
+    public let indexes: IndexSet?    // NSKeyValueChangeIndexesKey
 
     /// Represents the is prior property.
     public let isPrior: Bool           // NSKeyValueChangeNotificationIsPriorKey
@@ -193,20 +195,20 @@ public struct ChangeData<T> : CustomStringConvertible {
 
     - returns: The new created instance.
     */
-    init(change: [NSObject: AnyObject], keyPath: String) {
+    init(change: [AnyHashable: Any], keyPath: String) {
 
         // the key path
         self.keyPath = keyPath
 
         // mandatory
-        kind = NSKeyValueChange(rawValue: change[NSKeyValueChangeKindKey]!.unsignedLongValue)!
+        kind = NSKeyValueChange(rawValue: (change[NSKeyValueChangeKey.kindKey]! as AnyObject).uintValue)!
 
         // optional
-        newValue = change[NSKeyValueChangeNewKey] as? T
-        oldValue = change[NSKeyValueChangeOldKey] as? T
-        indexes  = change[NSKeyValueChangeIndexesKey] as? NSIndexSet
+        newValue = change[NSKeyValueChangeKey.newKey] as? T
+        oldValue = change[NSKeyValueChangeKey.oldKey] as? T
+        indexes  = change[NSKeyValueChangeKey.indexesKey] as? IndexSet
 
-        if let prior = change[NSKeyValueChangeNotificationIsPriorKey] as? Bool {
+        if let prior = change[NSKeyValueChangeKey.notificationIsPriorKey] as? Bool {
             isPrior  = prior
         } else {
             isPrior = false
@@ -246,9 +248,9 @@ Represents the observer way protocol.
 public protocol ObserverWay {
 
     /// Represents the ObservableType as generic type.
-    typealias ObservableType : Observable
+    associatedtype ObservableType : Observable
     /// Represents the PropertyType as generic type.
-    typealias PropertyType
+    associatedtype PropertyType
 
     /**
     Value changed change.
@@ -256,7 +258,7 @@ public protocol ObserverWay {
     - parameter observable: The observable parameter.
     - parameter change:     The change parameter.
     */
-    func valueChanged(observable: ObservableType, change: ChangeData<PropertyType>)
+    func valueChanged(_ observable: ObservableType, change: ChangeData<PropertyType>)
 }
 
 /**
@@ -274,7 +276,7 @@ public struct ClosureObserverWay<ObservableType : Observable, PropertyType> : Ob
     - parameter observable: The observable parameter.
     - parameter change:     The change parameter.
     */
-    public typealias ObservingBlock = (observable: ObservableType, change: ChangeData<PropertyType>) -> ()
+    public typealias ObservingBlock = (_ observable: ObservableType, _ change: ChangeData<PropertyType>) -> ()
 
     /// Represents the block property.
     public let block: ObservingBlock
@@ -286,7 +288,7 @@ public struct ClosureObserverWay<ObservableType : Observable, PropertyType> : Ob
 
     - returns: The new created instance.
     */
-    public init(block: ObservingBlock) {
+    public init(block: @escaping ObservingBlock) {
         self.block = block
     }
 
@@ -296,8 +298,8 @@ public struct ClosureObserverWay<ObservableType : Observable, PropertyType> : Ob
     - parameter observable: The observable parameter.
     - parameter change:     The change parameter.
     */
-    public func valueChanged(observable: ObservableType, change: ChangeData<PropertyType>) {
-        block(observable: observable, change: change)
+    public func valueChanged(_ observable: ObservableType, change: ChangeData<PropertyType>) {
+        block(observable, change)
     }
 }
 
@@ -312,8 +314,8 @@ Represents the observable storage enumeration.
 @version 1.0
 */
 private enum ObservableStorage {
-    case Retained
-    case Nonretained
+    case retained
+    case nonretained
 }
 
 /**
@@ -323,29 +325,29 @@ Represents the KVO controller class.
 
 @version 1.0
 */
-public class Controller<ObserverCallback : ObserverWay> : _KVOObserver, KVOObserver, CustomStringConvertible {
+open class Controller<ObserverCallback : ObserverWay> : _KVOObserver, KVOObserver, CustomStringConvertible {
 
     /// Represents the key path property.
-    public let keyPath: String
+    open let keyPath: String
     /// Represents the options property.
-    public let options: NSKeyValueObservingOptions
+    open let options: NSKeyValueObservingOptions
 
     /// Represents the observer way property.
-    public let observerWay: ObserverCallback
+    open let observerWay: ObserverCallback
 
     /// Represents the store property.
-    private let store: ObservableStore<ObserverCallback.ObservableType>
+    fileprivate let store: ObservableStore<ObserverCallback.ObservableType>
 
     /// Represents the observable property.
-    public var observable: ObserverCallback.ObservableType? {
+    open var observable: ObserverCallback.ObservableType? {
         return store.observable
     }
 
     /// Represents the proxy property.
-    private var proxy: ControllerProxy!
+    fileprivate var proxy: ControllerProxy!
 
     /// Represents the observing property.
-    public private(set) var observing = true
+    open fileprivate(set) var observing = true
 
     /**
     Initialize new instance with observable, observable storage, key path, options, context and observer way.
@@ -359,12 +361,12 @@ public class Controller<ObserverCallback : ObserverWay> : _KVOObserver, KVOObser
 
     - returns: The new created instance.
     */
-    private init(
+    fileprivate init(
         observable  : ObserverCallback.ObservableType,
         observableStorage: ObservableStorage,
         keyPath : String,
         options : NSKeyValueObservingOptions,
-        context : UnsafeMutablePointer<Void> = nil,
+        context : UnsafeMutableRawPointer? = nil,
         observerWay : ObserverCallback) {
 
             assert(!keyPath.isEmpty, "Keypath shouldn't be empty string")
@@ -392,10 +394,10 @@ public class Controller<ObserverCallback : ObserverWay> : _KVOObserver, KVOObser
     public convenience init(retainedObservable: ObserverCallback.ObservableType,
         keyPath : String,
         options : NSKeyValueObservingOptions,
-        context : UnsafeMutablePointer<Void> = nil,
+        context : UnsafeMutableRawPointer? = nil,
         observerWay : ObserverCallback) {
 
-            self.init(observable: retainedObservable, observableStorage: .Retained, keyPath : keyPath,
+            self.init(observable: retainedObservable, observableStorage: .retained, keyPath : keyPath,
                 options : options, context : context, observerWay: observerWay)
     }
 
@@ -413,10 +415,10 @@ public class Controller<ObserverCallback : ObserverWay> : _KVOObserver, KVOObser
     public convenience init(nonretainedObservable: ObserverCallback.ObservableType,
         keyPath : String,
         options : NSKeyValueObservingOptions,
-        context : UnsafeMutablePointer<Void> = nil,
+        context : UnsafeMutableRawPointer? = nil,
         observerWay : ObserverCallback) {
 
-            self.init(observable: nonretainedObservable, observableStorage: .Nonretained, keyPath : keyPath,
+            self.init(observable: nonretainedObservable, observableStorage: .nonretained, keyPath : keyPath,
                 options : options, context : context, observerWay: observerWay)
     }
 
@@ -430,8 +432,8 @@ public class Controller<ObserverCallback : ObserverWay> : _KVOObserver, KVOObser
     /**
     Unobserve.
     */
-    public func unobserve() {
-        if let observable = observable where observing {
+    open func unobserve() {
+        if let observable = observable , observing {
             SharedObserverController.shared.unobserve(observable, keyPath: keyPath, observer: self.proxy)
             observing = false
         }
@@ -443,8 +445,8 @@ public class Controller<ObserverCallback : ObserverWay> : _KVOObserver, KVOObser
     - parameter observable: The observable parameter.
     - parameter change:     The change parameter.
     */
-    private func valueChanged(observable: Observable, change: [NSObject : AnyObject]) {
-        if let observableObject = self.observable where observing {
+    fileprivate func valueChanged(_ observable: Observable, change: [AnyHashable: Any]) {
+        if let observableObject = self.observable , observing {
             let kvoChange = ChangeData<ObserverCallback.PropertyType>(change: change, keyPath: keyPath)
             observerWay.valueChanged(observableObject, change: kvoChange)
         }
@@ -458,7 +460,7 @@ public class Controller<ObserverCallback : ObserverWay> : _KVOObserver, KVOObser
 
     - returns: True if observing, otherwise false.
     */
-    public func isObserving(observable: Observable, keyPath: String) -> Bool {
+    open func isObserving(_ observable: Observable, keyPath: String) -> Bool {
 
         if self.observable != nil && observing && keyPath == self.keyPath {
             return true
@@ -468,7 +470,7 @@ public class Controller<ObserverCallback : ObserverWay> : _KVOObserver, KVOObser
     }
 
     /// Represents the description property.
-    public var description: String {
+    open var description: String {
         return "<Controller options: \(optionDescription(options)) keyPath: \(keyPath) observable: \(observable) observing: \(observing)>"
     }
 }
@@ -515,13 +517,13 @@ private class ControllerProxy: NSObject, _KVOObserver {
     - parameter observable: The observable parameter.
     - parameter change:     The change parameter.
     */
-    func valueChanged(observable: Observable, change: [NSObject : AnyObject]) {
+    func valueChanged(_ observable: Observable, change: [AnyHashable: Any]) {
         return observer.valueChanged(observable, change: change)
     }
 
     /// Represents the pointer property.
-    lazy var pointer: UnsafeMutablePointer<ControllerProxy> = {
-        return UnsafeMutablePointer<ControllerProxy>(Unmanaged<ControllerProxy>.passUnretained(self).toOpaque())
+    lazy var pointer: UnsafeMutableRawPointer = {
+        return UnsafeMutableRawPointer(Unmanaged<ControllerProxy>.passUnretained(self).toOpaque())
         }()
 
     /**
@@ -531,13 +533,13 @@ private class ControllerProxy: NSObject, _KVOObserver {
 
     - returns: The controller proxy.
     */
-    class func fromPointer(pointer: UnsafeMutablePointer<ControllerProxy>) -> ControllerProxy {
-        return Unmanaged<ControllerProxy>.fromOpaque(COpaquePointer(pointer)).takeUnretainedValue()
+    class func fromPointer(_ pointer: UnsafeMutableRawPointer) -> ControllerProxy {
+        return Unmanaged<ControllerProxy>.fromOpaque(UnsafeRawPointer(pointer)).takeUnretainedValue()
     }
 
     /// Represents the description property.
     override var description: String {
-        let description = String(format: "<%@:%p observer: \(observer)>", arguments: [NSStringFromClass(self.dynamicType), self])
+        let description = String(format: "<%@:%p observer: \(observer)>", arguments: [NSStringFromClass(type(of: self)), self])
         return description
     }
 }
@@ -551,7 +553,7 @@ Represents the shared observer controller class.
 */
 private class SharedObserverController : NSObject {
     /// Represents the observers property.
-    let observers = NSHashTable.weakObjectsHashTable()
+    let observers = NSHashTable<ControllerProxy>.weakObjects()
     /// Represents the lock property.
     var lock = OS_SPINLOCK_INIT
 
@@ -564,10 +566,10 @@ private class SharedObserverController : NSObject {
     - parameter observable: The observable parameter.
     - parameter observer:   The observer parameter.
     */
-    func observe(observable: Observable, observer: ControllerProxy) {
+    func observe(_ observable: Observable, observer: ControllerProxy) {
 
-        executeSafely {NSPointerFunctionsOptions.OpaqueMemory
-            observers.addObject(observer)
+        executeSafely {NSPointerFunctions.Options.opaqueMemory
+            observers.add(observer)
         }
 
         observable.addObserver(self, forKeyPath: observer.keyPath, options: observer.options, context: observer.pointer)
@@ -580,9 +582,9 @@ private class SharedObserverController : NSObject {
     - parameter keyPath:    The key path parameter.
     - parameter observer:   The observer parameter.
     */
-    func unobserve(observable: Observable, keyPath: String, observer: ControllerProxy) {
+    func unobserve(_ observable: Observable, keyPath: String, observer: ControllerProxy) {
         executeSafely {
-            observers.removeObject(observer)
+            observers.remove(observer)
         }
 
         observable.removeObserver(self, forKeyPath: keyPath)
@@ -596,28 +598,28 @@ private class SharedObserverController : NSObject {
     - parameter change:     The change parameter.
     - parameter context:    The context parameter.
     */
-    override func observeValueForKeyPath(keyPath: String?, ofObject observable: AnyObject?,
-        change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-            guard let change = change else {
-                return
-            }
+    override func observeValue(forKeyPath keyPath: String?, of observable: Any?,
+        change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let change = change else {
+            return
+        }
 
-            assert(context != nil,
-                "Context is missing for keyPath:'\(keyPath)' of observable:'\(observable)', change:'\(change)'")
-            assert(observable is NSObject, "Observable object should be of type NSObject")
+        guard let context = context else {
+            fatalError("Context is missing for keyPath:'\(keyPath)' of observable:'\(observable)', change:'\(change)'")
+        }
+        assert(observable is NSObject, "Observable object should be of type NSObject")
 
-            let observableObject = observable as! NSObject
+        let observableObject = observable as! NSObject
 
-            let pointer = UnsafeMutablePointer<ControllerProxy>(context)
-            let contextObserver = ControllerProxy.fromPointer(pointer)
-            var info: ControllerProxy?
-            executeSafely {
-                info = observers.member(contextObserver) as? ControllerProxy
-            }
+        let contextObserver = ControllerProxy.fromPointer(context)
+        var info: ControllerProxy?
+        executeSafely {
+            info = observers.member(contextObserver)
+        }
 
-            if let info = info {
-                info.valueChanged(observableObject, change: change)
-            }
+        if let info = info {
+            info.valueChanged(observableObject, change: change)
+        }
     }
 
     /**
@@ -625,7 +627,7 @@ private class SharedObserverController : NSObject {
 
     - parameter block: The block parameter.
     */
-    private func executeSafely(@noescape block: () -> ()) {
+    fileprivate func executeSafely(_ block: () -> ()) {
         OSSpinLockLock(&lock)
         block()
         OSSpinLockUnlock(&lock)
@@ -633,7 +635,7 @@ private class SharedObserverController : NSObject {
 
     /// Represents the description property.
     override var description: String {
-        var description = String(format: "<%@:%p", arguments: [NSStringFromClass(self.dynamicType), self])
+        var description = String(format: "<%@:%p", arguments: [NSStringFromClass(type(of: self)), self])
         executeSafely {
 
             var observersDescriptions = [String]()
@@ -671,7 +673,7 @@ public protocol KVOObserver {
 
     - returns: True, if observing.
     */
-    func isObserving(observable: Observable, keyPath: String) -> Bool
+    func isObserving(_ observable: Observable, keyPath: String) -> Bool
 }
 
 /**
@@ -692,7 +694,7 @@ private protocol _KVOObserver : class {
     - parameter observable: The observable parameter.
     - parameter change:     The change parameter.
     */
-    func valueChanged(observable: Observable, change: [NSObject : AnyObject])
+    func valueChanged(_ observable: Observable, change: [AnyHashable: Any])
 }
 
 /**
@@ -705,12 +707,12 @@ Represents the observable store class.
 private struct ObservableStore<T : Observable> {
 
     /// Represents the storage property.
-    private (set) var storage: ObservableStorage
+    fileprivate (set) var storage: ObservableStorage
 
     /// Represents the retained observable property.
-    private var retainedObservable: T?
+    fileprivate var retainedObservable: T?
     /// Represents the nonretained observable property.
-    private weak var nonretainedObservable: T?
+    fileprivate weak var nonretainedObservable: T?
 
     /**
     Initialize new instance with observable and storage.
@@ -724,16 +726,16 @@ private struct ObservableStore<T : Observable> {
         self.storage = storage
 
         switch storage {
-        case .Retained:     retainedObservable = observable
-        case .Nonretained:  nonretainedObservable = observable
+        case .retained:     retainedObservable = observable
+        case .nonretained:  nonretainedObservable = observable
         }
     }
 
     /// Represents the observable property.
     var observable : T? {
         switch storage {
-        case .Retained: return retainedObservable
-        case .Nonretained: return nonretainedObservable
+        case .retained: return retainedObservable
+        case .nonretained: return nonretainedObservable
         }
     }
 }
@@ -745,12 +747,12 @@ Option description.
 
 - returns: The description of the option.
 */
-private func optionDescription(option: NSKeyValueObservingOptions) -> String {
+private func optionDescription(_ option: NSKeyValueObservingOptions) -> String {
 
-    let options = [(option: NSKeyValueObservingOptions.New, "New"),
-        (option: NSKeyValueObservingOptions.Old, "Old"),
-        (option: NSKeyValueObservingOptions.Initial, "Initial"),
-        (option: NSKeyValueObservingOptions.Prior, "Prior")]
+    let options = [(option: NSKeyValueObservingOptions.new, "New"),
+        (option: NSKeyValueObservingOptions.old, "Old"),
+        (option: NSKeyValueObservingOptions.initial, "Initial"),
+        (option: NSKeyValueObservingOptions.prior, "Prior")]
 
     var varOption = option
 
@@ -764,7 +766,7 @@ private func optionDescription(option: NSKeyValueObservingOptions) -> String {
         }
     }
 
-    return descriptions.joinWithSeparator("|")
+    return descriptions.joined(separator: "|")
 }
 
 /**
@@ -772,8 +774,8 @@ Kind description.
 
 - parameter kind: The kind parameter.
 */
-private func kindDescription(kind: NSKeyValueChange) -> String {
-    let kinds = [NSKeyValueChange.Insertion: "Insertion",
-        NSKeyValueChange.Removal: "Removal", NSKeyValueChange.Replacement : "Replacement", NSKeyValueChange.Setting : "Setting" ]
+private func kindDescription(_ kind: NSKeyValueChange) -> String {
+    let kinds = [NSKeyValueChange.insertion: "Insertion",
+        NSKeyValueChange.removal: "Removal", NSKeyValueChange.replacement : "Replacement", NSKeyValueChange.setting : "Setting" ]
     return kinds[kind] ?? "Unknown Value: \(kind)"
 }

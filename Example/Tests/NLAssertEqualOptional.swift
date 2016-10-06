@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 
 extension XCTestCase {
-    func NLAssertEqualOptional<T : Equatable>(@autoclosure expression1: () -> T?, @autoclosure _ expression2: () -> T, _ message: String? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+    func NLAssertEqualOptional<T : Equatable>(_ expression1: @autoclosure () -> T?, _ expression2: @autoclosure () -> T, _ message: String? = nil, file: String = #file, line: UInt = #line) {
         var m = "NLAssertEqualOptional failed - "
         if let e = expression1() {
             let e2 = expression2()
@@ -21,15 +21,15 @@ extension XCTestCase {
                 else {
                     m += "Optional (\(e)) is not equal to (\(e2))"
                 }
-                self.recordFailureWithDescription(m, inFile: file, atLine: line, expected: true)
+                self.recordFailure(withDescription: m, inFile: file, atLine: line, expected: true)
             }
         }
         else {
-            self.recordFailureWithDescription(m + "Optional value is empty", inFile: file, atLine: line, expected: true)
+            self.recordFailure(withDescription: m + "Optional value is empty", inFile: file, atLine: line, expected: true)
         }
     }
 
-    func NLAssertEqualOptional<T : Equatable>(@autoclosure expression1: () -> [T]?, @autoclosure _ expression2: () -> [T], _ message: String? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+    func NLAssertEqualOptional<T : Equatable>(_ expression1: @autoclosure () -> [T]?, _ expression2: @autoclosure () -> [T], _ message: String? = nil, file: String = #file, line: UInt = #line) {
         var m = "NLAssertEqualOptional failed - "
         if let e = expression1() {
             let e2 = expression2()
@@ -40,15 +40,15 @@ extension XCTestCase {
                 else {
                     m += "Optional (\(e)) is not equal to (\(e2))"
                 }
-                self.recordFailureWithDescription(m, inFile: file, atLine: line, expected: true)
+                self.recordFailure(withDescription: m, inFile: file, atLine: line, expected: true)
             }
         }
         else {
-            self.recordFailureWithDescription(m + "Optional value is empty", inFile: file, atLine: line, expected: true)
+            self.recordFailure(withDescription: m + "Optional value is empty", inFile: file, atLine: line, expected: true)
         }
     }
 
-    func NLAssertEqualOptional<T, U : Equatable>(@autoclosure expression1: () -> [T : U]?,@autoclosure _ expression2: () -> [T : U], _ message: String? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+    func NLAssertEqualOptional<T, U : Equatable>(_ expression1: @autoclosure () -> [T : U]?,_ expression2: @autoclosure () -> [T : U], _ message: String? = nil, file: String = #file, line: UInt = #line) {
         var m = "NLAssertEqualOptional failed - "
         if let e = expression1() {
             let e2 = expression2()
@@ -59,11 +59,11 @@ extension XCTestCase {
                 else {
                     m += "Optional (\(e)) is not equal to (\(e2))"
                 }
-                self.recordFailureWithDescription(m, inFile: file, atLine: line, expected: true)
+                self.recordFailure(withDescription: m, inFile: file, atLine: line, expected: true)
             }
         }
         else {
-            self.recordFailureWithDescription(m + "Optional value is empty", inFile: file, atLine: line, expected: true)
+            self.recordFailure(withDescription: m + "Optional value is empty", inFile: file, atLine: line, expected: true)
         }
     }
 }

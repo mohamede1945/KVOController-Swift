@@ -18,10 +18,10 @@ Represents the clock class.
 class Clock : NSObject {
 
     /// Represents the timer property.
-    private var timer: Timer?
+    fileprivate var timer: Timer?
 
     /// Represents the date property.
-    dynamic private (set) var date = NSDate()
+    dynamic fileprivate (set) var date = Date()
 
     /**
     Initialize new instance.
@@ -31,7 +31,7 @@ class Clock : NSObject {
     override init() {
         super.init()
         timer = Timer(interval: 1, repeated: true) { [weak self] () -> Void in
-            self?.date = NSDate()
+            self?.date = Date()
         }
     }
 }
@@ -46,12 +46,12 @@ Represents the timer class.
 class Timer {
 
     /// Represents the is cancelled property.
-    private var isCancelled = false
+    fileprivate var isCancelled = false
     /// Represents the repeated property.
-    private let repeated: Bool
+    fileprivate let repeated: Bool
 
     /// Represents the timer property.
-    private let timer: dispatch_source_t
+    fileprivate let timer: DispatchSourceTimer
 
     /**
     Initialize new instance with interval, repeated, queue and handler.
@@ -63,19 +63,19 @@ class Timer {
 
     - returns: The new created instance.
     */
-    init(interval: NSTimeInterval, repeated: Bool, queue: dispatch_queue_t = dispatch_get_main_queue(), handler: dispatch_block_t) {
+    init(interval: TimeInterval, repeated: Bool, queue: DispatchQueue = DispatchQueue.main, handler: @escaping ()->()) {
         self.repeated = repeated
 
-        timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-        let dispatchInterval = UInt64(interval * Double(NSEC_PER_SEC))
-        dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, dispatchInterval, 0);
+        timer = DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags(rawValue: UInt(0)), queue: queue)
 
-        dispatch_source_set_event_handler(timer) { [weak self] in
+        timer.scheduleRepeating(deadline: DispatchTime.now(), interval: .seconds(1), leeway: .milliseconds(0))
+
+        timer.setEventHandler { [weak self] in
             if self?.isCancelled == false {
                 handler()
             }
         }
-        dispatch_resume(timer);
+        timer.resume();
     }
 
     /**
@@ -83,7 +83,7 @@ class Timer {
     */
     func cancel() {
         isCancelled = true
-        dispatch_source_cancel(timer)
+        timer.cancel()
     }
 
     /**
