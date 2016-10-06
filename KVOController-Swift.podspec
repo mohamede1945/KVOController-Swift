@@ -28,8 +28,5 @@ This project is inspired by facebook/KVOController. So, it doesn't only provide 
   s.requires_arc = true
 
   s.source_files = 'Sources/**/*'
-  s.resource_bundles = {
-    'KVOController-Swift' => ['Pod/Assets/*.png']
-  }
 
 end
