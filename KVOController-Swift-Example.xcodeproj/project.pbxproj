@@ -20,9 +20,6 @@
 		5CB991B81DA6AA3A003E3A0D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CB991B51DA6AA3A003E3A0D /* Info.plist */; };
 		5CB991BA1DA6AA48003E3A0D /* KVOController-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CB991B61DA6AA3A003E3A0D /* KVOController-Swift.h */; };
 		5CB991BB1DA6AA4A003E3A0D /* KVOController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB991B71DA6AA3A003E3A0D /* KVOController.swift */; };
-		5CB991C01DA6AB63003E3A0D /* KVOController-Swift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 5CB991BD1DA6AB63003E3A0D /* KVOController-Swift.podspec */; };
-		5CB991C11DA6AB63003E3A0D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5CB991BE1DA6AB63003E3A0D /* LICENSE */; };
-		5CB991C21DA6AB63003E3A0D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 5CB991BF1DA6AB63003E3A0D /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,9 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				5CB991BC1DA6AB57003E3A0D /* ... */,
-				5CB9917A1DA6A520003E3A0D /* KVOController-Swift-Example */,
-				5CB991B41DA6AA3A003E3A0D /* Sources */,
+				5CB991EF1DA77451003E3A0D /* KVOController-Swift */,
 				5CB991A01DA6A548003E3A0D /* KVOController-SwiftTests */,
+				5CB9917A1DA6A520003E3A0D /* KVOController-Swift-Example */,
 				5CB991791DA6A520003E3A0D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -174,6 +171,14 @@
 				5CB991BF1DA6AB63003E3A0D /* README.md */,
 			);
 			name = ...;
+			sourceTree = "<group>";
+		};
+		5CB991EF1DA77451003E3A0D /* KVOController-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				5CB991B41DA6AA3A003E3A0D /* Sources */,
+			);
+			name = "KVOController-Swift";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,12 +302,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CB991C11DA6AB63003E3A0D /* LICENSE in Resources */,
 				5CB991B81DA6AA3A003E3A0D /* Info.plist in Resources */,
 				5CB991861DA6A520003E3A0D /* LaunchScreen.storyboard in Resources */,
 				5CB991831DA6A520003E3A0D /* Assets.xcassets in Resources */,
 				5CB991811DA6A520003E3A0D /* Main.storyboard in Resources */,
-				5CB991C01DA6AB63003E3A0D /* KVOController-Swift.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,7 +332,6 @@
 			files = (
 				5CB991B31DA6A6BB003E3A0D /* Clock.swift in Sources */,
 				5CB9917E1DA6A520003E3A0D /* ViewController.swift in Sources */,
-				5CB991C21DA6AB63003E3A0D /* README.md in Sources */,
 				5CB9917C1DA6A520003E3A0D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
